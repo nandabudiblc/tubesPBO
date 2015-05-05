@@ -7,14 +7,17 @@
 package Controller;
 import DAO.TempatWisataDAO;
 import Model.TempatWisata;
+import java.awt.EventQueue;
 import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 /**
  *
  * @author Nanda
  */
 public class TempatWisataController {
     TempatWisataDAO tempatWisataDAO;
-    
+    DefaultComboBoxModel comboBoxModel;
     public TempatWisataController() {
         tempatWisataDAO = new TempatWisataDAO();
     }
@@ -47,5 +50,18 @@ public class TempatWisataController {
         return isSuccess;
     }
    
+        public void populateDatatoJComboboxTWTempat(ArrayList<TempatWisata> listTempatWisata, JComboBox jComboBoxPWTempat) {
+        comboBoxModel = new DefaultComboBoxModel();
+        for (final TempatWisata tempatWisata : listTempatWisata) {
+            EventQueue.invokeLater(new Runnable() {
+
+                @Override
+                public void run() {// updates to the Swing GUI must be done on EDT
+                    comboBoxModel.addElement(tempatWisata.getNama());
+                }
+            });
+        }
+        jComboBoxPWTempat.setModel(comboBoxModel);
+    }
     
 }

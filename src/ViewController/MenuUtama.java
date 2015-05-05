@@ -8,9 +8,10 @@ package ViewController;
 import Controller.*;
 import DAO.Auth;
 import Model.*;
-import java.util.Date;
-import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
+import java.util.Date;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author Nanda
@@ -25,6 +26,7 @@ public class MenuUtama extends javax.swing.JFrame {
     ArrayList<Petugas> listPetugas;
     ArrayList<TempatWisata> listTempatWisata;
     Auth auth;
+
     /**
      * Creates new form MenuUtama
      */
@@ -42,7 +44,10 @@ public class MenuUtama extends javax.swing.JFrame {
         viewDataTempatWisata();
         disableEnableTW(false);
         helper.setSpinnerDate(jSpinnerPetugasTanggal);
+
     }
+
+
 
     
     private void disableEnableMember(boolean status){
@@ -135,7 +140,6 @@ public class MenuUtama extends javax.swing.JFrame {
     
     private void viewDataTempatWisata(){
         listTempatWisata = twController.getAllTempatWisata();
-//        System.out.println(listTempatWisata.get(1));
         String[] title = {"No","Nama","Lokasi","Deskripsi","Lat Long"};
         String[][] data = new String[listTempatWisata.size()][5];
         for(int i=0;i<listTempatWisata.size();i++){
@@ -146,8 +150,8 @@ public class MenuUtama extends javax.swing.JFrame {
             data[i][3] = tw.getDeskripsi();
             data[i][4] = tw.getLatlong();
         }
-//        System.out.println(listPetugas.get(1).getNama());
         jTableTW.setModel(new DefaultTableModel(data, title));
+        twController.populateDatatoJComboboxTWTempat(listTempatWisata,jComboBoxPWTempat);
     }
     
     /**
