@@ -261,29 +261,29 @@ public class MenuUtama extends javax.swing.JFrame {
         jPanel22 = new javax.swing.JPanel();
         jPanel23 = new javax.swing.JPanel();
         jScrollPane8 = new javax.swing.JScrollPane();
-        jTextAreaMemberAlamat1 = new javax.swing.JTextArea();
+        jTextAreaPWFasilitas = new javax.swing.JTextArea();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
-        jComboBoxMemberPrivelege1 = new javax.swing.JComboBox();
+        jComboBoxPWTempat = new javax.swing.JComboBox();
         jLabel28 = new javax.swing.JLabel();
-        jTextFieldMemberNama1 = new javax.swing.JTextField();
-        jSpinner1 = new javax.swing.JSpinner();
-        jSpinner2 = new javax.swing.JSpinner();
-        jSpinner3 = new javax.swing.JSpinner();
-        jSpinner4 = new javax.swing.JSpinner();
+        jTextFieldPWNama = new javax.swing.JTextField();
+        jSpinnerPWBatas = new javax.swing.JSpinner();
+        jSpinnerPWJumlah = new javax.swing.JSpinner();
+        jSpinnerPWHarga = new javax.swing.JSpinner();
+        jSpinnerPWLama = new javax.swing.JSpinner();
         jPanel24 = new javax.swing.JPanel();
-        jButtonMemberTambah1 = new javax.swing.JButton();
-        jButtonMemberEdit1 = new javax.swing.JButton();
-        jButtonMemberHapus1 = new javax.swing.JButton();
-        jButtonMemberEnDi1 = new javax.swing.JButton();
-        jButtonMemberPrint1 = new javax.swing.JButton();
+        jButtonPWTambah = new javax.swing.JButton();
+        jButtonPWEdit = new javax.swing.JButton();
+        jButtonPWHapus = new javax.swing.JButton();
+        jButtonPWEnDi = new javax.swing.JButton();
+        jButtonPWPrint = new javax.swing.JButton();
         jPanel25 = new javax.swing.JPanel();
         jScrollPane9 = new javax.swing.JScrollPane();
-        jTableMember1 = new javax.swing.JTable();
+        jTablePaketWisata = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -1077,11 +1077,11 @@ public class MenuUtama extends javax.swing.JFrame {
 
         jPanel23.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jTextAreaMemberAlamat1.setColumns(20);
-        jTextAreaMemberAlamat1.setRows(5);
-        jScrollPane8.setViewportView(jTextAreaMemberAlamat1);
+        jTextAreaPWFasilitas.setColumns(20);
+        jTextAreaPWFasilitas.setRows(5);
+        jScrollPane8.setViewportView(jTextAreaPWFasilitas);
 
-        jLabel20.setText("Batas Peseta");
+        jLabel20.setText("Batas Peserta");
 
         jLabel21.setText("Harga");
 
@@ -1110,12 +1110,12 @@ public class MenuUtama extends javax.swing.JFrame {
                     .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextFieldMemberNama1)
-                    .addComponent(jComboBoxMemberPrivelege1, 0, 207, Short.MAX_VALUE)
-                    .addComponent(jSpinner1)
-                    .addComponent(jSpinner2)
-                    .addComponent(jSpinner3)
-                    .addComponent(jSpinner4))
+                    .addComponent(jTextFieldPWNama)
+                    .addComponent(jComboBoxPWTempat, 0, 207, Short.MAX_VALUE)
+                    .addComponent(jSpinnerPWBatas)
+                    .addComponent(jSpinnerPWJumlah)
+                    .addComponent(jSpinnerPWHarga)
+                    .addComponent(jSpinnerPWLama))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1131,27 +1131,27 @@ public class MenuUtama extends javax.swing.JFrame {
                         .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel27)
                             .addComponent(jLabel28)
-                            .addComponent(jTextFieldMemberNama1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextFieldPWNama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel20)
-                            .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jSpinnerPWBatas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                         .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel21)
-                            .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jSpinnerPWHarga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel24)
-                            .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jSpinnerPWJumlah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel22)
-                            .addComponent(jSpinner4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jSpinnerPWLama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel23)
-                            .addComponent(jComboBoxMemberPrivelege1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jComboBoxPWTempat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(7, 7, 7))
                     .addComponent(jScrollPane8))
                 .addContainerGap())
@@ -1159,38 +1159,38 @@ public class MenuUtama extends javax.swing.JFrame {
 
         jPanel24.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jButtonMemberTambah1.setText("Tambah");
-        jButtonMemberTambah1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonPWTambah.setText("Tambah");
+        jButtonPWTambah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonMemberTambah1ActionPerformed(evt);
+                jButtonPWTambahActionPerformed(evt);
             }
         });
 
-        jButtonMemberEdit1.setText("Edit");
-        jButtonMemberEdit1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonPWEdit.setText("Edit");
+        jButtonPWEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonMemberEdit1ActionPerformed(evt);
+                jButtonPWEditActionPerformed(evt);
             }
         });
 
-        jButtonMemberHapus1.setText("Hapus");
-        jButtonMemberHapus1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonPWHapus.setText("Hapus");
+        jButtonPWHapus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonMemberHapus1ActionPerformed(evt);
+                jButtonPWHapusActionPerformed(evt);
             }
         });
 
-        jButtonMemberEnDi1.setText("Batal");
-        jButtonMemberEnDi1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonPWEnDi.setText("Batal");
+        jButtonPWEnDi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonMemberEnDi1ActionPerformed(evt);
+                jButtonPWEnDiActionPerformed(evt);
             }
         });
 
-        jButtonMemberPrint1.setText("Print");
-        jButtonMemberPrint1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonPWPrint.setText("Print");
+        jButtonPWPrint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonMemberPrint1ActionPerformed(evt);
+                jButtonPWPrintActionPerformed(evt);
             }
         });
 
@@ -1200,19 +1200,16 @@ public class MenuUtama extends javax.swing.JFrame {
             jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel24Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButtonMemberTambah1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonPWTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(14, 14, 14)
-                .addComponent(jButtonMemberEdit1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(145, 145, 145)
-                .addComponent(jButtonMemberEnDi1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonPWEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22)
+                .addComponent(jButtonPWHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButtonMemberPrint1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel24Layout.createSequentialGroup()
-                    .addGap(254, 254, 254)
-                    .addComponent(jButtonMemberHapus1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(286, Short.MAX_VALUE)))
+                .addComponent(jButtonPWEnDi, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonPWPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(62, Short.MAX_VALUE))
         );
         jPanel24Layout.setVerticalGroup(
             jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1220,21 +1217,17 @@ public class MenuUtama extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButtonMemberEdit1, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
-                        .addComponent(jButtonMemberEnDi1, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
-                        .addComponent(jButtonMemberPrint1, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE))
-                    .addComponent(jButtonMemberTambah1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jButtonPWEdit, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+                        .addComponent(jButtonPWEnDi, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+                        .addComponent(jButtonPWPrint, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+                        .addComponent(jButtonPWHapus, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE))
+                    .addComponent(jButtonPWTambah, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
-            .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel24Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jButtonMemberHapus1, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
-                    .addContainerGap()))
         );
 
         jPanel25.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jTableMember1.setModel(new javax.swing.table.DefaultTableModel(
+        jTablePaketWisata.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -1245,12 +1238,12 @@ public class MenuUtama extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jTableMember1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTablePaketWisata.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTableMember1MouseClicked(evt);
+                jTablePaketWisataMouseClicked(evt);
             }
         });
-        jScrollPane9.setViewportView(jTableMember1);
+        jScrollPane9.setViewportView(jTablePaketWisata);
 
         javax.swing.GroupLayout jPanel25Layout = new javax.swing.GroupLayout(jPanel25);
         jPanel25.setLayout(jPanel25Layout);
@@ -1668,29 +1661,29 @@ public class MenuUtama extends javax.swing.JFrame {
         helper.printTable("Laporan Member", jTableMember);
     }//GEN-LAST:event_jButtonMemberPrintActionPerformed
 
-    private void jButtonMemberTambah1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMemberTambah1ActionPerformed
+    private void jButtonPWTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPWTambahActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonMemberTambah1ActionPerformed
+    }//GEN-LAST:event_jButtonPWTambahActionPerformed
 
-    private void jButtonMemberEdit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMemberEdit1ActionPerformed
+    private void jButtonPWEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPWEditActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonMemberEdit1ActionPerformed
+    }//GEN-LAST:event_jButtonPWEditActionPerformed
 
-    private void jButtonMemberHapus1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMemberHapus1ActionPerformed
+    private void jButtonPWHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPWHapusActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonMemberHapus1ActionPerformed
+    }//GEN-LAST:event_jButtonPWHapusActionPerformed
 
-    private void jButtonMemberEnDi1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMemberEnDi1ActionPerformed
+    private void jButtonPWEnDiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPWEnDiActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonMemberEnDi1ActionPerformed
+    }//GEN-LAST:event_jButtonPWEnDiActionPerformed
 
-    private void jButtonMemberPrint1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMemberPrint1ActionPerformed
+    private void jButtonPWPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPWPrintActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonMemberPrint1ActionPerformed
+    }//GEN-LAST:event_jButtonPWPrintActionPerformed
 
-    private void jTableMember1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableMember1MouseClicked
+    private void jTablePaketWisataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTablePaketWisataMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTableMember1MouseClicked
+    }//GEN-LAST:event_jTablePaketWisataMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1729,15 +1722,15 @@ public class MenuUtama extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonMemberEdit;
-    private javax.swing.JButton jButtonMemberEdit1;
     private javax.swing.JButton jButtonMemberEnDi;
-    private javax.swing.JButton jButtonMemberEnDi1;
     private javax.swing.JButton jButtonMemberHapus;
-    private javax.swing.JButton jButtonMemberHapus1;
     private javax.swing.JButton jButtonMemberPrint;
-    private javax.swing.JButton jButtonMemberPrint1;
     private javax.swing.JButton jButtonMemberTambah;
-    private javax.swing.JButton jButtonMemberTambah1;
+    private javax.swing.JButton jButtonPWEdit;
+    private javax.swing.JButton jButtonPWEnDi;
+    private javax.swing.JButton jButtonPWHapus;
+    private javax.swing.JButton jButtonPWPrint;
+    private javax.swing.JButton jButtonPWTambah;
     private javax.swing.JButton jButtonPetugasEdit;
     private javax.swing.JButton jButtonPetugasEnDi;
     private javax.swing.JButton jButtonPetugasHapus;
@@ -1750,7 +1743,7 @@ public class MenuUtama extends javax.swing.JFrame {
     private javax.swing.JButton jButtonTWPrint;
     private javax.swing.JButton jButtonTWTambah;
     private javax.swing.JComboBox jComboBoxMemberPrivelege;
-    private javax.swing.JComboBox jComboBoxMemberPrivelege1;
+    private javax.swing.JComboBox jComboBoxPWTempat;
     private javax.swing.JComboBox jComboBoxPetugasPrivelege;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1817,27 +1810,27 @@ public class MenuUtama extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JSpinner jSpinner2;
-    private javax.swing.JSpinner jSpinner3;
-    private javax.swing.JSpinner jSpinner4;
+    private javax.swing.JSpinner jSpinnerPWBatas;
+    private javax.swing.JSpinner jSpinnerPWHarga;
+    private javax.swing.JSpinner jSpinnerPWJumlah;
+    private javax.swing.JSpinner jSpinnerPWLama;
     private javax.swing.JSpinner jSpinnerPetugasGaji;
     private javax.swing.JSpinner jSpinnerPetugasTanggal;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTableMember;
-    private javax.swing.JTable jTableMember1;
+    private javax.swing.JTable jTablePaketWisata;
     private javax.swing.JTable jTablePetugas;
     private javax.swing.JTable jTableTW;
     private javax.swing.JTextArea jTextAreaMemberAlamat;
-    private javax.swing.JTextArea jTextAreaMemberAlamat1;
+    private javax.swing.JTextArea jTextAreaPWFasilitas;
     private javax.swing.JTextArea jTextAreaPetugasAlamat;
     private javax.swing.JTextArea jTextAreaTWDeskripsi;
     private javax.swing.JTextArea jTextAreaTWLokasi;
     private javax.swing.JTextField jTextFieldMemberNama;
-    private javax.swing.JTextField jTextFieldMemberNama1;
     private javax.swing.JTextField jTextFieldMemberNoHp;
     private javax.swing.JTextField jTextFieldMemberNoKtp;
     private javax.swing.JTextField jTextFieldMemberUsername;
+    private javax.swing.JTextField jTextFieldPWNama;
     private javax.swing.JTextField jTextFieldPetugasNama;
     private javax.swing.JTextField jTextFieldPetugasNoHp;
     private javax.swing.JTextField jTextFieldPetugasNoKtp;

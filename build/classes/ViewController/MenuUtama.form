@@ -1393,12 +1393,12 @@
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jTextFieldMemberNama1" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jComboBoxMemberPrivelege1" alignment="0" pref="207" max="32767" attributes="0"/>
-                                      <Component id="jSpinner1" max="32767" attributes="0"/>
-                                      <Component id="jSpinner2" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jSpinner3" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jSpinner4" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jTextFieldPWNama" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jComboBoxPWTempat" alignment="0" pref="207" max="32767" attributes="0"/>
+                                      <Component id="jSpinnerPWBatas" max="32767" attributes="0"/>
+                                      <Component id="jSpinnerPWJumlah" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jSpinnerPWHarga" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jSpinnerPWLama" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jLabel27" min="-2" pref="51" max="-2" attributes="0"/>
@@ -1417,32 +1417,32 @@
                                           <Group type="103" groupAlignment="3" attributes="0">
                                               <Component id="jLabel27" alignment="3" min="-2" max="-2" attributes="0"/>
                                               <Component id="jLabel28" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jTextFieldMemberNama1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jTextFieldPWNama" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
                                               <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jSpinner1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jSpinnerPWBatas" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace pref="16" max="32767" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
                                               <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jSpinner3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jSpinnerPWHarga" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
                                               <Component id="jLabel24" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jSpinner2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jSpinnerPWJumlah" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
                                               <Component id="jLabel22" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jSpinner4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jSpinnerPWLama" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
                                               <Component id="jLabel23" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jComboBoxMemberPrivelege1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jComboBoxPWTempat" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                                       </Group>
@@ -1461,7 +1461,7 @@
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                           <SubComponents>
-                            <Component class="javax.swing.JTextArea" name="jTextAreaMemberAlamat1">
+                            <Component class="javax.swing.JTextArea" name="jTextAreaPWFasilitas">
                               <Properties>
                                 <Property name="columns" type="int" value="20"/>
                                 <Property name="rows" type="int" value="5"/>
@@ -1471,7 +1471,7 @@
                         </Container>
                         <Component class="javax.swing.JLabel" name="jLabel20">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Batas Peseta"/>
+                            <Property name="text" type="java.lang.String" value="Batas Peserta"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel21">
@@ -1499,7 +1499,7 @@
                             <Property name="text" type="java.lang.String" value="Fasilitas"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JComboBox" name="jComboBoxMemberPrivelege1">
+                        <Component class="javax.swing.JComboBox" name="jComboBoxPWTempat">
                           <Properties>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="0"/>
@@ -1511,15 +1511,15 @@
                             <Property name="text" type="java.lang.String" value="Nama"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="jTextFieldMemberNama1">
+                        <Component class="javax.swing.JTextField" name="jTextFieldPWNama">
                         </Component>
-                        <Component class="javax.swing.JSpinner" name="jSpinner1">
+                        <Component class="javax.swing.JSpinner" name="jSpinnerPWBatas">
                         </Component>
-                        <Component class="javax.swing.JSpinner" name="jSpinner2">
+                        <Component class="javax.swing.JSpinner" name="jSpinnerPWJumlah">
                         </Component>
-                        <Component class="javax.swing.JSpinner" name="jSpinner3">
+                        <Component class="javax.swing.JSpinner" name="jSpinnerPWHarga">
                         </Component>
-                        <Component class="javax.swing.JSpinner" name="jSpinner4">
+                        <Component class="javax.swing.JSpinner" name="jSpinnerPWLama">
                         </Component>
                       </SubComponents>
                     </Container>
@@ -1537,21 +1537,16 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jButtonMemberTambah1" min="-2" pref="105" max="-2" attributes="0"/>
+                                  <Component id="jButtonPWTambah" min="-2" pref="105" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                                  <Component id="jButtonMemberEdit1" min="-2" pref="105" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="145" max="-2" attributes="0"/>
-                                  <Component id="jButtonMemberEnDi1" min="-2" pref="97" max="-2" attributes="0"/>
+                                  <Component id="jButtonPWEdit" min="-2" pref="105" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                                  <Component id="jButtonPWHapus" min="-2" pref="105" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jButtonMemberPrint1" min="-2" pref="97" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="254" max="-2" attributes="0"/>
-                                      <Component id="jButtonMemberHapus1" min="-2" pref="105" max="-2" attributes="0"/>
-                                      <EmptySpace pref="286" max="32767" attributes="0"/>
-                                  </Group>
+                                  <Component id="jButtonPWEnDi" min="-2" pref="97" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="jButtonPWPrint" min="-2" pref="97" max="-2" attributes="0"/>
+                                  <EmptySpace pref="62" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1561,63 +1556,57 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                          <Component id="jButtonMemberEdit1" alignment="3" pref="33" max="32767" attributes="0"/>
-                                          <Component id="jButtonMemberEnDi1" alignment="3" pref="33" max="32767" attributes="0"/>
-                                          <Component id="jButtonMemberPrint1" alignment="3" pref="33" max="32767" attributes="0"/>
+                                          <Component id="jButtonPWEdit" alignment="3" pref="33" max="32767" attributes="0"/>
+                                          <Component id="jButtonPWEnDi" alignment="3" pref="33" max="32767" attributes="0"/>
+                                          <Component id="jButtonPWPrint" alignment="3" pref="33" max="32767" attributes="0"/>
+                                          <Component id="jButtonPWHapus" alignment="3" pref="33" max="32767" attributes="0"/>
                                       </Group>
-                                      <Component id="jButtonMemberTambah1" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jButtonPWTambah" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jButtonMemberHapus1" pref="33" max="32767" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                  </Group>
                               </Group>
                           </Group>
                         </DimensionLayout>
                       </Layout>
                       <SubComponents>
-                        <Component class="javax.swing.JButton" name="jButtonMemberTambah1">
+                        <Component class="javax.swing.JButton" name="jButtonPWTambah">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="Tambah"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonMemberTambah1ActionPerformed"/>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonPWTambahActionPerformed"/>
                           </Events>
                         </Component>
-                        <Component class="javax.swing.JButton" name="jButtonMemberEdit1">
+                        <Component class="javax.swing.JButton" name="jButtonPWEdit">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="Edit"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonMemberEdit1ActionPerformed"/>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonPWEditActionPerformed"/>
                           </Events>
                         </Component>
-                        <Component class="javax.swing.JButton" name="jButtonMemberHapus1">
+                        <Component class="javax.swing.JButton" name="jButtonPWHapus">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="Hapus"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonMemberHapus1ActionPerformed"/>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonPWHapusActionPerformed"/>
                           </Events>
                         </Component>
-                        <Component class="javax.swing.JButton" name="jButtonMemberEnDi1">
+                        <Component class="javax.swing.JButton" name="jButtonPWEnDi">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="Batal"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonMemberEnDi1ActionPerformed"/>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonPWEnDiActionPerformed"/>
                           </Events>
                         </Component>
-                        <Component class="javax.swing.JButton" name="jButtonMemberPrint1">
+                        <Component class="javax.swing.JButton" name="jButtonPWPrint">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="Print"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonMemberPrint1ActionPerformed"/>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonPWPrintActionPerformed"/>
                           </Events>
                         </Component>
                       </SubComponents>
@@ -1659,7 +1648,7 @@
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                           <SubComponents>
-                            <Component class="javax.swing.JTable" name="jTableMember1">
+                            <Component class="javax.swing.JTable" name="jTablePaketWisata">
                               <Properties>
                                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                                   <Table columnCount="4" rowCount="4">
@@ -1671,7 +1660,7 @@
                                 </Property>
                               </Properties>
                               <Events>
-                                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTableMember1MouseClicked"/>
+                                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTablePaketWisataMouseClicked"/>
                               </Events>
                             </Component>
                           </SubComponents>
