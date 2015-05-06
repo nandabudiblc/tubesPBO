@@ -30,13 +30,13 @@ public class Helper {
         
     }
     
-    public void setSpinnerDate(JSpinner spinner){
+    public void setSpinnerDate(JSpinner spinner, String format){
         Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.YEAR, 1990);
+        calendar.set(Calendar.YEAR, 2015);
         SpinnerDateModel model = new SpinnerDateModel();
         model.setValue(calendar.getTime());
         spinner.setModel(model);
-        spinner.setEditor(new JSpinner.DateEditor(spinner, "yyyy-MM-dd"));
+        spinner.setEditor(new JSpinner.DateEditor(spinner, format));
     }
     
     public void sendMessage(String message, String title){

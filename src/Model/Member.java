@@ -40,6 +40,10 @@ public class Member extends Person{
        
     }
 
+    @Override
+    public String toString(){
+        return this.getNama();
+    }
     /**
      * @return the idMember
      */

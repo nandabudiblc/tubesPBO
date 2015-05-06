@@ -17,6 +17,9 @@ public class Transaksi {
     private int id_petugas; 
     private int id_member;
     private int id_paketwisata;
+    private String namaPetugas;
+    private String namaMember;
+    private String namaPaket;
     private String jenis_pesan;
     private int jumlah_kelompok;
     private int jumlah_orang;
@@ -37,7 +40,18 @@ public class Transaksi {
         this.status = status;
         this.tanggal = tanggal;
     }
-
+    
+    public Transaksi(int id_petugas, int id_member, int id_paketwisata, String jenis_pesan, int jumlah_kelompok, int jumlah_orang, String status, Date tanggal){
+        this.id_petugas = id_petugas;
+        this.id_member = id_member;
+        this.id_paketwisata = id_paketwisata;
+        this.jenis_pesan = jenis_pesan;
+        this.jumlah_kelompok = jumlah_kelompok;
+        this.jumlah_orang = jumlah_orang;
+        this.status = status;
+        this.tanggal = tanggal;
+    }
+    
     /**
      * @return the id_transaksi
      */
@@ -162,5 +176,47 @@ public class Transaksi {
      */
     public void setTanggal(Date tanggal) {
         this.tanggal = tanggal;
+    }
+
+    /**
+     * @return the namaPetugas
+     */
+    public String getNamaPetugas() {
+        return namaPetugas;
+    }
+
+    /**
+     * @param namaPetugas the namaPetugas to set
+     */
+    public void setNamaPetugas(String namaPetugas) {
+        this.namaPetugas = namaPetugas;
+    }
+
+    /**
+     * @return the namaMember
+     */
+    public String getNamaMember() {
+        return namaMember;
+    }
+
+    /**
+     * @param namaMember the namaMember to set
+     */
+    public void setNamaMember(String namaMember) {
+        this.namaMember = namaMember;
+    }
+
+    /**
+     * @return the namaPaket
+     */
+    public String getNamaPaket() {
+        return namaPaket;
+    }
+
+    /**
+     * @param namaPaket the namaPaket to set
+     */
+    public void setNamaPaket(String namaPaket) {
+        this.namaPaket = namaPaket;
     }
 }

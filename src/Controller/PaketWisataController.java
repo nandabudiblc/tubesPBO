@@ -8,8 +8,9 @@ package Controller;
 
 import DAO.PaketWisataDAO;
 import Model.PaketWisata;
-import java.awt.EventQueue;
 import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 
 /**
  *
@@ -49,4 +50,11 @@ public class PaketWisataController {
         return isSuccess;
     }
 
+        public void populateDatatoJComboboxPW(ArrayList<PaketWisata> listPaketWisata, JComboBox jComboBoxPaketWisata) {
+        DefaultComboBoxModel comboBoxModel = new DefaultComboBoxModel();
+        for (final PaketWisata pw : listPaketWisata) {
+                    comboBoxModel.addElement(pw);
+            }
+        jComboBoxPaketWisata.setModel(comboBoxModel);
+    }
 }

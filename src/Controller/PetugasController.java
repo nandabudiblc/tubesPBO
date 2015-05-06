@@ -8,6 +8,8 @@ package Controller;
 import DAO.PetugasDAO;
 import Model.Petugas;
 import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 /**
  *
  * @author Nanda
@@ -47,5 +49,11 @@ public class PetugasController {
         return isSuccess;
     }
    
-    
+    public void populateDatatoJComboboxPetugas(ArrayList<Petugas> listPetugas, JComboBox jComboBoxPetugas) {
+        DefaultComboBoxModel comboBoxModel = new DefaultComboBoxModel();
+        for (final Petugas petugas : listPetugas) {
+                    comboBoxModel.addElement(petugas);
+            }
+        jComboBoxPetugas.setModel(comboBoxModel);
+    }
 }

@@ -46,10 +46,15 @@ public class MenuUtama extends javax.swing.JFrame {
         viewDataTempatWisata();
         disableEnableTW(false);
         viewDataPaketWisata();
-        helper.setSpinnerDate(jSpinnerPetugasTanggal);
+        helper.setSpinnerDate(jSpinnerPetugasTanggal,"yyyy-MM-dd");
+        helper.setSpinnerDate(jSpinnerTransaksiTanggal, "dd-MM-yyyy");
         disableEnablePaketWisata(false);
+        setSpinnerJumlahKelompok(false);
     }
 
+    private void setSpinnerJumlahKelompok(boolean status){
+        jSpinnerTransaksiJmlKel.setEnabled(status);
+    }
     private void disableEnableMember(boolean status){
         jButtonMemberEnDi.setEnabled(status);
         jButtonMemberEdit.setEnabled(status);
@@ -84,7 +89,7 @@ public class MenuUtama extends javax.swing.JFrame {
             jTextAreaPetugasAlamat.setText("");
             jTextFieldPetugasTempat.setText("");
             jSpinnerPetugasGaji.setValue(0);
-            helper.setSpinnerDate(jSpinnerPetugasTanggal);
+            helper.setSpinnerDate(jSpinnerPetugasTanggal,"yyyy-MM-dd");
             jComboBoxPetugasPrivelege.setSelectedIndex(0);
         }
     }
@@ -121,6 +126,26 @@ public class MenuUtama extends javax.swing.JFrame {
             jTextAreaPWFasilitas.setText("");
         }
     }
+    
+    private void disableEnableTransaksi(boolean status){
+        jButtonTransaksiEnDi.setEnabled(status);
+        jButtonTransaksiEdit.setEnabled(status);
+        jButtonTransaksiHapus.setEnabled(status);
+        if(status){
+            jButtonTransaksiTambah.setEnabled(false);
+        }else{
+            jButtonTransaksiTambah.setEnabled(true);
+            jComboBoxTransaksiJenis.setSelectedIndex(0);
+            jComboBoxTransaksiMember.setSelectedIndex(0);
+            jComboBoxTransaksiPaket.setSelectedIndex(0);
+            jComboBoxTransaksiPetugas.setSelectedIndex(0);
+            jComboBoxTransaksiStatus.setSelectedIndex(0);
+            jComboBoxTransaksiJenis.setSelectedIndex(0);
+            jSpinnerTransaksiJmlKel.setValue(0);
+            jSpinnerTransaksiJmlOrang.setValue(0);
+            helper.setSpinnerDate(jSpinnerTransaksiTanggal, "dd-MM-yyyy");
+        }
+    }
 
     private void viewDataMember(){
         listMember = memberController.getAllMember();
@@ -136,6 +161,7 @@ public class MenuUtama extends javax.swing.JFrame {
             data[i][5] = m.getPrivilege();
         }
         jTableMember.setModel(new DefaultTableModel(data, title));
+        memberController.populateDatatoJComboboxMember(listMember, jComboBoxTransaksiMember);
     }
     
     private void viewDataPetugas(){
@@ -152,6 +178,7 @@ public class MenuUtama extends javax.swing.JFrame {
             data[i][5] = p.getPrivilege();
         }
         jTablePetugas.setModel(new DefaultTableModel(data, title));
+        petugasController.populateDatatoJComboboxPetugas(listPetugas, jComboBoxTransaksiPetugas);
     }
     
     private void viewDataTempatWisata(){
@@ -186,6 +213,7 @@ public class MenuUtama extends javax.swing.JFrame {
             data[i][6] = String.valueOf(p.getLamaHari());
         }
         jTablePaketWisata.setModel(new DefaultTableModel(data, title));
+        pwController.populateDatatoJComboboxPW(listPaketWisata, jComboBoxTransaksiPaket);
     }
 
     /**
@@ -313,7 +341,34 @@ public class MenuUtama extends javax.swing.JFrame {
         jPanel25 = new javax.swing.JPanel();
         jScrollPane9 = new javax.swing.JScrollPane();
         jTablePaketWisata = new javax.swing.JTable();
-        jPanel5 = new javax.swing.JPanel();
+        jPanel26 = new javax.swing.JPanel();
+        jPanel27 = new javax.swing.JPanel();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
+        jComboBoxTransaksiPetugas = new javax.swing.JComboBox();
+        jLabel37 = new javax.swing.JLabel();
+        jSpinnerTransaksiJmlKel = new javax.swing.JSpinner();
+        jComboBoxTransaksiMember = new javax.swing.JComboBox();
+        jComboBoxTransaksiPaket = new javax.swing.JComboBox();
+        jComboBoxTransaksiJenis = new javax.swing.JComboBox();
+        jSpinnerTransaksiJmlOrang = new javax.swing.JSpinner();
+        jComboBoxTransaksiStatus = new javax.swing.JComboBox();
+        jLabel38 = new javax.swing.JLabel();
+        jSpinnerTransaksiTanggal = new javax.swing.JSpinner();
+        jPanel28 = new javax.swing.JPanel();
+        jButtonTransaksiTambah = new javax.swing.JButton();
+        jButtonTransaksiEdit = new javax.swing.JButton();
+        jButtonTransaksiHapus = new javax.swing.JButton();
+        jButtonTransaksiEnDi = new javax.swing.JButton();
+        jButtonTransaksiPrint = new javax.swing.JButton();
+        jButtonTransaksiChart = new javax.swing.JButton();
+        jPanel29 = new javax.swing.JPanel();
+        jScrollPane11 = new javax.swing.JScrollPane();
+        jTableTransaksi = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -380,7 +435,7 @@ public class MenuUtama extends javax.swing.JFrame {
                         .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE))
+                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jTextFieldMemberNama)
@@ -538,7 +593,7 @@ public class MenuUtama extends javax.swing.JFrame {
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -848,7 +903,7 @@ public class MenuUtama extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 695, Short.MAX_VALUE)
+            .addGap(0, 687, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -857,7 +912,7 @@ public class MenuUtama extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 526, Short.MAX_VALUE)
+            .addGap(0, 508, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -1094,7 +1149,7 @@ public class MenuUtama extends javax.swing.JFrame {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 526, Short.MAX_VALUE)
+            .addGap(0, 508, Short.MAX_VALUE)
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -1131,11 +1186,11 @@ public class MenuUtama extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel23Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
+                    .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel28, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
+                    .addComponent(jLabel28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -1238,7 +1293,7 @@ public class MenuUtama extends javax.swing.JFrame {
                 .addComponent(jButtonPWEnDi, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonPWPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
         jPanel24Layout.setVerticalGroup(
             jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1287,7 +1342,7 @@ public class MenuUtama extends javax.swing.JFrame {
             jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel25Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1332,18 +1387,247 @@ public class MenuUtama extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Paket Wisata", jPanel4);
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 695, Short.MAX_VALUE)
+        jPanel27.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabel29.setText("Member");
+
+        jLabel32.setText("Paket Wisata");
+
+        jLabel33.setText("Jumlah Kelompok");
+
+        jLabel34.setText("Jumlah Orang");
+
+        jLabel35.setText("Jenis Pesan");
+
+        jLabel36.setText("Status");
+
+        jLabel37.setText("Petugas");
+
+        jComboBoxTransaksiJenis.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Perorangan", "Kelompok" }));
+        jComboBoxTransaksiJenis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxTransaksiJenisActionPerformed(evt);
+            }
+        });
+
+        jComboBoxTransaksiStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Jadi", "Batal" }));
+
+        jLabel38.setText("Tanggal");
+
+        javax.swing.GroupLayout jPanel27Layout = new javax.swing.GroupLayout(jPanel27);
+        jPanel27.setLayout(jPanel27Layout);
+        jPanel27Layout.setHorizontalGroup(
+            jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel27Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabel32, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
+                    .addComponent(jLabel29, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel37, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel35, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jComboBoxTransaksiPaket, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jComboBoxTransaksiMember, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jComboBoxTransaksiPetugas, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jComboBoxTransaksiJenis, 0, 208, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel38, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel33, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jComboBoxTransaksiStatus, javax.swing.GroupLayout.Alignment.LEADING, 0, 212, Short.MAX_VALUE)
+                    .addComponent(jSpinnerTransaksiJmlOrang, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSpinnerTransaksiJmlKel, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSpinnerTransaksiTanggal))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 526, Short.MAX_VALUE)
+        jPanel27Layout.setVerticalGroup(
+            jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel27Layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel27Layout.createSequentialGroup()
+                        .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel33)
+                            .addComponent(jSpinnerTransaksiJmlKel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel34)
+                            .addComponent(jSpinnerTransaksiJmlOrang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel36)
+                            .addComponent(jComboBoxTransaksiStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel38)
+                            .addComponent(jSpinnerTransaksiTanggal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel27Layout.createSequentialGroup()
+                        .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel37)
+                            .addComponent(jComboBoxTransaksiPetugas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel29)
+                            .addComponent(jComboBoxTransaksiMember, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel32)
+                            .addComponent(jComboBoxTransaksiPaket, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel35)
+                            .addComponent(jComboBoxTransaksiJenis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(56, 56, 56))
         );
 
-        jTabbedPane1.addTab("Transaksi", jPanel5);
+        jPanel28.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jButtonTransaksiTambah.setText("Tambah");
+        jButtonTransaksiTambah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTransaksiTambahActionPerformed(evt);
+            }
+        });
+
+        jButtonTransaksiEdit.setText("Edit");
+        jButtonTransaksiEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTransaksiEditActionPerformed(evt);
+            }
+        });
+
+        jButtonTransaksiHapus.setText("Hapus");
+        jButtonTransaksiHapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTransaksiHapusActionPerformed(evt);
+            }
+        });
+
+        jButtonTransaksiEnDi.setText("Batal");
+        jButtonTransaksiEnDi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTransaksiEnDiActionPerformed(evt);
+            }
+        });
+
+        jButtonTransaksiPrint.setText("Print");
+        jButtonTransaksiPrint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTransaksiPrintActionPerformed(evt);
+            }
+        });
+
+        jButtonTransaksiChart.setText("Laporan");
+        jButtonTransaksiChart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTransaksiChartActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel28Layout = new javax.swing.GroupLayout(jPanel28);
+        jPanel28.setLayout(jPanel28Layout);
+        jPanel28Layout.setHorizontalGroup(
+            jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel28Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButtonTransaksiTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonTransaksiEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonTransaksiHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonTransaksiEnDi, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonTransaksiPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonTransaksiChart, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel28Layout.setVerticalGroup(
+            jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel28Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButtonTransaksiHapus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonTransaksiEnDi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel28Layout.createSequentialGroup()
+                        .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonTransaksiPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonTransaksiChart, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jButtonTransaksiEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonTransaksiTambah, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        jPanel29.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jTableTransaksi.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jTableTransaksi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableTransaksiMouseClicked(evt);
+            }
+        });
+        jScrollPane11.setViewportView(jTableTransaksi);
+
+        javax.swing.GroupLayout jPanel29Layout = new javax.swing.GroupLayout(jPanel29);
+        jPanel29.setLayout(jPanel29Layout);
+        jPanel29Layout.setHorizontalGroup(
+            jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel29Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane11)
+                .addContainerGap())
+        );
+        jPanel29Layout.setVerticalGroup(
+            jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel29Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel26Layout = new javax.swing.GroupLayout(jPanel26);
+        jPanel26.setLayout(jPanel26Layout);
+        jPanel26Layout.setHorizontalGroup(
+            jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel26Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel29, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel27, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel26Layout.setVerticalGroup(
+            jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel26Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel27, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(18, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Transaksi", jPanel26);
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -1351,22 +1635,353 @@ public class MenuUtama extends javax.swing.JFrame {
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 689, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel7);
-        jPanel7.setBounds(10, 120, 710, 560);
+        jPanel7.setBounds(10, 120, 710, 520);
 
-        setBounds(0, 0, 748, 724);
+        setBounds(0, 0, 748, 699);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTableTransaksiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableTransaksiMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTableTransaksiMouseClicked
+
+    private void jButtonTransaksiChartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTransaksiChartActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonTransaksiChartActionPerformed
+
+    private void jButtonTransaksiPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTransaksiPrintActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonTransaksiPrintActionPerformed
+
+    private void jButtonTransaksiEnDiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTransaksiEnDiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonTransaksiEnDiActionPerformed
+
+    private void jButtonTransaksiHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTransaksiHapusActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonTransaksiHapusActionPerformed
+
+    private void jButtonTransaksiEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTransaksiEditActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonTransaksiEditActionPerformed
+
+    private void jButtonTransaksiTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTransaksiTambahActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonTransaksiTambahActionPerformed
+
+    private void jTablePaketWisataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTablePaketWisataMouseClicked
+        // TODO add your handling code here:
+        PaketWisata p = listPaketWisata.get(jTablePaketWisata.getSelectedRow());
+        jTextFieldPWNama.setText(p.getNama());
+        jSpinnerPWBatas.setValue(p.getBatasPeserta());
+        jSpinnerPWHarga.setValue(p.getHarga());
+        jSpinnerPWJumlah.setValue(p.getJumlahPaket());
+        jSpinnerPWLama.setValue(p.getLamaHari());
+        for(int i=0;i<listTempatWisata.size();i++){
+            if(listTempatWisata.get(i).getIdTempatWisata()==p.getIdTempatWisata()){
+                jComboBoxPWTempat.setSelectedIndex(i);
+                break;
+            }
+        }
+        jTextAreaPWFasilitas.setText(p.getFasilitas());
+        disableEnablePaketWisata(true);
+    }//GEN-LAST:event_jTablePaketWisataMouseClicked
+
+    private void jButtonPWPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPWPrintActionPerformed
+        // TODO add your handling code here:
+        helper.printTable("Laporan Paket Wisata", jTablePaketWisata);
+    }//GEN-LAST:event_jButtonPWPrintActionPerformed
+
+    private void jButtonPWEnDiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPWEnDiActionPerformed
+        // TODO add your handling code here:
+        disableEnablePaketWisata(false);
+        jTablePaketWisata.clearSelection();
+    }//GEN-LAST:event_jButtonPWEnDiActionPerformed
+
+    private void jButtonPWHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPWHapusActionPerformed
+        // TODO add your handling code here:
+        PaketWisata pw = listPaketWisata.get(jTablePaketWisata.getSelectedRow());
+        if(pwController.deletePaketWisata(pw)){
+            helper.sendMessage("Data paket wisata berhasil dihapus", "Berhasil");
+        }else{
+            helper.sendMessage("Data paket wisata gagal dihapus", "Gagal");
+        }
+        disableEnablePaketWisata(false);
+        viewDataPaketWisata();
+    }//GEN-LAST:event_jButtonPWHapusActionPerformed
+
+    private void jButtonPWEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPWEditActionPerformed
+        // TODO add your handling code here:
+        TempatWisata tp = (TempatWisata)jComboBoxPWTempat.getSelectedItem();
+        int idTempatWisata = tp.getIdTempatWisata();
+
+        String nama = jTextFieldPWNama.getText();
+        int batasPeserta = (int)jSpinnerPWBatas.getValue();
+        double harga = Double.parseDouble(jSpinnerPWHarga.getValue()+"");
+        int jumlahPaket = (int)jSpinnerPWJumlah.getValue();
+        int lamaHari = (int)jSpinnerPWLama.getValue();
+        String fasilitas = jTextAreaPWFasilitas.getText();
+        int idPaketWisata = listPaketWisata.get(jTablePaketWisata.getSelectedRow()).getIdPaketWisata();
+        //        System.out.println(idPaketWisata);
+        if(nama.equals("")||batasPeserta==0||harga==0||jumlahPaket==0||lamaHari==0||fasilitas.equals("")){
+            helper.sendMessage("Data harus diisi semua", "Gagal");
+        }else{
+            PaketWisata pw = new PaketWisata(idPaketWisata, nama, batasPeserta, harga, idTempatWisata, jumlahPaket, lamaHari, fasilitas);
+            if(pwController.updatePaketWisata(pw)){
+                helper.sendMessage("Data paket wisata berhasil di edit", "Berhasil");
+            }else{
+                helper.sendMessage("Data paket wisata gagal di edit", "Gagal");
+            }
+            disableEnablePaketWisata(false);
+            viewDataPaketWisata();
+        }
+
+    }//GEN-LAST:event_jButtonPWEditActionPerformed
+
+    private void jButtonPWTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPWTambahActionPerformed
+        // TODO add your handling code here:
+        TempatWisata tp = (TempatWisata)jComboBoxPWTempat.getSelectedItem();
+        int idTempatWisata = tp.getIdTempatWisata();
+        String nama = jTextFieldPWNama.getText();
+        int batasPeserta = (int)jSpinnerPWBatas.getValue();
+        double harga = Double.parseDouble(jSpinnerPWHarga.getValue()+"");
+        int jumlahPaket = (int)jSpinnerPWJumlah.getValue();
+        int lamaHari = (int)jSpinnerPWLama.getValue();
+        String fasilitas = jTextAreaPWFasilitas.getText();
+
+        if(nama.equals("")||batasPeserta==0||harga==0||jumlahPaket==0||lamaHari==0||fasilitas.equals("")){
+            helper.sendMessage("Data harus diisi semua", "Gagal");
+        }else{
+            PaketWisata pw = new PaketWisata(nama, batasPeserta, harga, idTempatWisata, jumlahPaket, lamaHari, fasilitas);
+            if(pwController.addPaketWisata(pw)){
+                helper.sendMessage("Data paket wisata berhasil di tambah", "Berhasil");
+            }else{
+                helper.sendMessage("Data paket wisata gagal di tambah", "Gagal");
+            }
+            disableEnablePaketWisata(false);
+            viewDataPaketWisata();
+        }
+
+    }//GEN-LAST:event_jButtonPWTambahActionPerformed
+
+    private void jTableTWMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableTWMouseClicked
+        TempatWisata tw = listTempatWisata.get(jTableTW.getSelectedRow());
+        jTextFieldTWNama.setText(tw.getNama());
+        jTextFieldTWLatLong.setText(tw.getLatlong());
+        jTextAreaTWDeskripsi.setText(tw.getDeskripsi());
+        jTextAreaTWLokasi.setText(tw.getLokasi());
+        disableEnableTW(true);
+    }//GEN-LAST:event_jTableTWMouseClicked
+
+    private void jButtonTWLokasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTWLokasiActionPerformed
+        // TODO add your handling code here:
+        String latlong = jTextFieldTWLatLong.getText();
+        if(helper.cekKoneksi()){
+            if(!(latlong.equals(""))){
+                new Lokasi(latlong).setVisible(true);
+            }else{
+                helper.sendMessage("Pilih dari tabel dulu", "Gagal");
+            }
+        }else{
+            helper.sendMessage("Periksa Koneksi anda", "Gagal");
+        }
+
+    }//GEN-LAST:event_jButtonTWLokasiActionPerformed
+
+    private void jButtonTWPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTWPrintActionPerformed
+        // TODO add your handling code here:
+        helper.printTable("Laporan Tempat Wisata", jTableTW);
+    }//GEN-LAST:event_jButtonTWPrintActionPerformed
+
+    private void jButtonTWEnDiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTWEnDiActionPerformed
+        // TODO add your handling code here:
+        disableEnableTW(false);
+        jTableTW.clearSelection();
+    }//GEN-LAST:event_jButtonTWEnDiActionPerformed
+
+    private void jButtonTWHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTWHapusActionPerformed
+        // TODO add your handling code here:
+        TempatWisata tw = listTempatWisata.get(jTableTW.getSelectedRow());
+        if(twController.deleteTempatWisata(tw)){
+            helper.sendMessage("Data tempat wisata berhasil dihapus", "Berhasil");
+        }else{
+            helper.sendMessage("Data tempat wisata gagal dihapus", "Gagal");
+        }
+        disableEnableTW(false);
+        viewDataTempatWisata();
+    }//GEN-LAST:event_jButtonTWHapusActionPerformed
+
+    private void jButtonTWEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTWEditActionPerformed
+        // TODO add your handling code here:
+        int idTempatWisata = listTempatWisata.get(jTableTW.getSelectedRow()).getIdTempatWisata();
+        String nama = jTextFieldTWNama.getText();
+        String lokasi = jTextAreaTWLokasi.getText() ;
+        String deskripsi = jTextAreaTWDeskripsi.getText();
+        String latlong = jTextFieldTWLatLong.getText();
+        if(nama.equals("")||lokasi.equals("")||deskripsi.equals("")||latlong.equals("")){
+            helper.sendMessage("Data harus diisi semua", "Gagal");
+        }else{
+            TempatWisata tw = new TempatWisata(idTempatWisata, nama, lokasi, deskripsi, latlong);
+            if(twController.updateTempatWisata(tw)){
+                helper.sendMessage("Data tempat wisata berhasil di edit", "Berhasil");
+            }else{
+                helper.sendMessage("Data tempat wisata gagal di edit", "Gagal");
+            }
+            disableEnableTW(false);
+            viewDataTempatWisata();
+        }
+    }//GEN-LAST:event_jButtonTWEditActionPerformed
+
+    private void jButtonTWTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTWTambahActionPerformed
+        // TODO add your handling code here:
+        String nama = jTextFieldTWNama.getText();
+        String lokasi = jTextAreaTWLokasi.getText() ;
+        String deskripsi = jTextAreaTWDeskripsi.getText();
+        String latlong = jTextFieldTWLatLong.getText();
+        if(nama.equals("")||lokasi.equals("")||deskripsi.equals("")||latlong.equals("")){
+            helper.sendMessage("Data harus diisi semua", "Gagal");
+        }else{
+            TempatWisata tw = new TempatWisata(nama, lokasi, deskripsi, latlong);
+            if(twController.addTempatWisata(tw)){
+                helper.sendMessage("Data tempat wisata berhasil ditambah", "Berhasil");
+            }else{
+                helper.sendMessage("Data tempat wisata gagal ditambah", "Gagal");
+            }
+            disableEnableTW(false);
+            viewDataTempatWisata();
+        }
+    }//GEN-LAST:event_jButtonTWTambahActionPerformed
+
+    private void jTablePetugasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTablePetugasMouseClicked
+        // TODO add your handling code here:
+        Petugas petugas = listPetugas.get(jTablePetugas.getSelectedRow());
+        jTextFieldPetugasNama.setText(petugas.getNama());
+        jTextFieldPetugasNoKtp.setText(petugas.getNoKtp());
+        jTextFieldPetugasNoHp.setText(petugas.getNoHp());
+        jTextFieldPetugasUsername.setText(petugas.getUsername());
+        jTextAreaPetugasAlamat.setText(petugas.getAlamat());
+        int selectedIndex = 0;
+        switch(petugas.getPrivilege()){
+            case "Admin" :
+            selectedIndex = 0;
+            break;
+            case "Petugas" :
+            selectedIndex = 1;
+            break;
+        }
+        jComboBoxPetugasPrivelege.setSelectedIndex(selectedIndex);
+        jTextFieldPetugasTempat.setText(petugas.getTempatLahir());
+        jSpinnerPetugasGaji.setValue(petugas.getGaji());
+        jSpinnerPetugasTanggal.setValue(petugas.getTanggalLahir());
+        disableEnablePetugas(true);
+    }//GEN-LAST:event_jTablePetugasMouseClicked
+
+    private void jButtonPetugasPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPetugasPrintActionPerformed
+        helper.printTable("Laporan Petugas", jTablePetugas);
+    }//GEN-LAST:event_jButtonPetugasPrintActionPerformed
+
+    private void jButtonPetugasEnDiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPetugasEnDiActionPerformed
+        // TODO add your handling code here:
+        disableEnablePetugas(false);
+        jTablePetugas.clearSelection();
+    }//GEN-LAST:event_jButtonPetugasEnDiActionPerformed
+
+    private void jButtonPetugasHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPetugasHapusActionPerformed
+        // TODO add your handling code here:
+        Petugas petugas = listPetugas.get(jTablePetugas.getSelectedRow());
+        if(petugasController.deletePetugas(petugas)){
+            helper.sendMessage("Data petugas berhasil dihapus", "Berhasil");
+        }else{
+            helper.sendMessage("Data petugas gagal dihapus", "Gagal");
+        }
+        disableEnablePetugas(false);
+        viewDataPetugas();
+    }//GEN-LAST:event_jButtonPetugasHapusActionPerformed
+
+    private void jButtonPetugasEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPetugasEditActionPerformed
+        // TODO add your handling code here:
+        int idPetugas = listPetugas.get(jTablePetugas.getSelectedRow()).getIdPetugas();
+        String nama = jTextFieldPetugasNama.getText();
+        String alamat = jTextAreaPetugasAlamat.getText() ;
+        String noKtp = jTextFieldPetugasNoKtp.getText();
+        String noHp = jTextFieldPetugasNoHp.getText();
+        String username = jTextFieldPetugasUsername.getText();
+        String password = jPasswordFieldPetugasPassword.getText();
+        String tempatLahir = jTextFieldPetugasTempat.getText();
+        Date tanggal = (Date)jSpinnerPetugasTanggal.getValue();
+        java.sql.Date tanggaLahir = new java.sql.Date(tanggal.getTime());
+        int gaji = (int)jSpinnerPetugasGaji.getValue();
+        String privilege = "";
+        switch(jComboBoxPetugasPrivelege.getSelectedIndex()){
+            case 0 :
+            privilege = "Admin";
+            break;
+            case 1 :
+            privilege = "Petugas";
+            break;
+        }
+        if(nama.equals("")||alamat.equals("")||noKtp.equals("")||noHp.equals("")
+            ||username.equals("")||password.equals("")||privilege.equals("")||tanggaLahir.equals("")||gaji==0){
+            helper.sendMessage("Data harus diisi semua", "Gagal");
+        }else{
+            password = auth.encodeToMD5(jPasswordFieldPetugasPassword.getText());
+            Petugas petugas = new Petugas(idPetugas,nama, alamat, noKtp, noHp, username, password, privilege, tempatLahir, tanggaLahir, gaji);
+            if(petugasController.updatePetugas(petugas)){
+                helper.sendMessage("Data petugas berhasil di edit", "Berhasil");
+            }else{
+                helper.sendMessage("Data petugas gagal di edit", "Gagal");
+            }
+            disableEnablePetugas(false);
+            viewDataPetugas();
+        }
+    }//GEN-LAST:event_jButtonPetugasEditActionPerformed
+
+    private void jButtonPetugasTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPetugasTambahActionPerformed
+        // TODO add your handling code here:
+        String nama = jTextFieldPetugasNama.getText();
+        String alamat = jTextAreaPetugasAlamat.getText() ;
+        String noKtp = jTextFieldPetugasNoKtp.getText();
+        String noHp = jTextFieldPetugasNoHp.getText();
+        String username = jTextFieldPetugasUsername.getText();
+        String password = auth.encodeToMD5(jPasswordFieldPetugasPassword.getText());
+        String tempatLahir = jTextFieldPetugasTempat.getText();
+        Date tanggal = (Date)jSpinnerPetugasTanggal.getValue();
+        java.sql.Date tanggaLahir = new java.sql.Date(tanggal.getTime());
+        int gaji = (int)jSpinnerPetugasGaji.getValue();
+        String privilege = "";
+        switch(jComboBoxPetugasPrivelege.getSelectedIndex()){
+            case 0 :
+            privilege = "Admin";
+            break;
+            case 1 :
+            privilege = "Petugas";
+            break;
+        }
+        if(nama.equals("")||alamat.equals("")||noKtp.equals("")||noHp.equals("")
+            ||username.equals("")||password.equals("")||privilege.equals("")||tanggaLahir.equals("")||gaji==0){
+            helper.sendMessage("Data harus diisi semua", "Gagal");
+        }else{
+            Petugas petugas = new Petugas(nama, alamat, noKtp, noHp, username, password, privilege, tempatLahir, tanggaLahir, gaji);
+            if(petugasController.addPetugas(petugas)){
+                helper.sendMessage("Data petugas berhasil ditambah", "Berhasil");
+            }else{
+                helper.sendMessage("Data petugas gagal ditambah", "Gagal");
+            }
+            disableEnablePetugas(false);
+            viewDataPetugas();
+        }
+    }//GEN-LAST:event_jButtonPetugasTambahActionPerformed
 
     private void jTableMemberMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableMemberMouseClicked
         // TODO add your handling code here:
@@ -1379,48 +1994,20 @@ public class MenuUtama extends javax.swing.JFrame {
         int selectedIndex = 0;
         switch(member.getPrivilege()){
             case "Member" :
-                selectedIndex = 0;
-                break;
+            selectedIndex = 0;
+            break;
             case "Customer" :
-                selectedIndex = 1;
-                break;
+            selectedIndex = 1;
+            break;
         }
         jComboBoxMemberPrivelege.setSelectedIndex(selectedIndex);
         disableEnableMember(true);
     }//GEN-LAST:event_jTableMemberMouseClicked
 
-    private void jButtonMemberTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMemberTambahActionPerformed
+    private void jButtonMemberPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMemberPrintActionPerformed
         // TODO add your handling code here:
-        String nama = jTextFieldMemberNama.getText();
-        String alamat = jTextAreaMemberAlamat.getText() ;
-        String noKtp = jTextFieldMemberNoKtp.getText();
-        String noHp = jTextFieldMemberNoHp.getText();
-        String username = jTextFieldMemberUsername.getText();
-        String password = auth.encodeToMD5(jPasswordFieldMemberPassword.getText());
-        String privilege = "";
-        switch(jComboBoxMemberPrivelege.getSelectedIndex()){
-            case 0 :
-                privilege = "Member";
-                break;
-            case 1 :
-                privilege = "Customer";
-                break;
-        }
-        if(nama.equals("")||alamat.equals("")||noKtp.equals("")||noHp.equals("")
-           ||username.equals("")||password.equals("")||privilege.equals("")){
-            helper.sendMessage("Data harus diisi semua", "Gagal");
-        }else{
-            Member member = new Member(nama, alamat, noKtp, noHp, username, password, privilege);
-            if(memberController.addMember(member)){
-                helper.sendMessage("Data member berhasil ditambah", "Berhasil");
-            }else{
-                helper.sendMessage("Data member gagal ditambah", "Gagal");
-            }
-            disableEnableMember(false);
-            viewDataMember();
-        }
-        
-    }//GEN-LAST:event_jButtonMemberTambahActionPerformed
+        helper.printTable("Laporan Member", jTableMember);
+    }//GEN-LAST:event_jButtonMemberPrintActionPerformed
 
     private void jButtonMemberEnDiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMemberEnDiActionPerformed
         // TODO add your handling code here:
@@ -1452,14 +2039,14 @@ public class MenuUtama extends javax.swing.JFrame {
         String privilege = "";
         switch(jComboBoxMemberPrivelege.getSelectedIndex()){
             case 0 :
-                privilege = "Member";
-                break;
+            privilege = "Member";
+            break;
             case 1 :
-                privilege = "Customer";
-                break;
+            privilege = "Customer";
+            break;
         }
         if(nama.equals("")||alamat.equals("")||noKtp.equals("")||noHp.equals("")
-           ||username.equals("")||password.equals("")||privilege.equals("")){
+            ||username.equals("")||password.equals("")||privilege.equals("")){
             helper.sendMessage("Data harus diisi semua", "Gagal");
         }else{
             password = auth.encodeToMD5(jPasswordFieldMemberPassword.getText());
@@ -1474,316 +2061,47 @@ public class MenuUtama extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonMemberEditActionPerformed
 
-    private void jButtonPetugasTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPetugasTambahActionPerformed
+    private void jButtonMemberTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMemberTambahActionPerformed
         // TODO add your handling code here:
-        String nama = jTextFieldPetugasNama.getText();
-        String alamat = jTextAreaPetugasAlamat.getText() ;
-        String noKtp = jTextFieldPetugasNoKtp.getText();
-        String noHp = jTextFieldPetugasNoHp.getText();
-        String username = jTextFieldPetugasUsername.getText();
-        String password = auth.encodeToMD5(jPasswordFieldPetugasPassword.getText());
-        String tempatLahir = jTextFieldPetugasTempat.getText();
-        Date tanggal = (Date)jSpinnerPetugasTanggal.getValue();
-        java.sql.Date tanggaLahir = new java.sql.Date(tanggal.getTime());
-        int gaji = (int)jSpinnerPetugasGaji.getValue();
+        String nama = jTextFieldMemberNama.getText();
+        String alamat = jTextAreaMemberAlamat.getText() ;
+        String noKtp = jTextFieldMemberNoKtp.getText();
+        String noHp = jTextFieldMemberNoHp.getText();
+        String username = jTextFieldMemberUsername.getText();
+        String password = auth.encodeToMD5(jPasswordFieldMemberPassword.getText());
         String privilege = "";
-        switch(jComboBoxPetugasPrivelege.getSelectedIndex()){
+        switch(jComboBoxMemberPrivelege.getSelectedIndex()){
             case 0 :
-                privilege = "Admin";
-                break;
+            privilege = "Member";
+            break;
             case 1 :
-                privilege = "Petugas";
-                break;
+            privilege = "Customer";
+            break;
         }
         if(nama.equals("")||alamat.equals("")||noKtp.equals("")||noHp.equals("")
-           ||username.equals("")||password.equals("")||privilege.equals("")||tanggaLahir.equals("")||gaji==0){
+            ||username.equals("")||password.equals("")||privilege.equals("")){
             helper.sendMessage("Data harus diisi semua", "Gagal");
         }else{
-            Petugas petugas = new Petugas(nama, alamat, noKtp, noHp, username, password, privilege, tempatLahir, tanggaLahir, gaji);
-            if(petugasController.addPetugas(petugas)){
-                helper.sendMessage("Data petugas berhasil ditambah", "Berhasil");
+            Member member = new Member(nama, alamat, noKtp, noHp, username, password, privilege);
+            if(memberController.addMember(member)){
+                helper.sendMessage("Data member berhasil ditambah", "Berhasil");
             }else{
-                helper.sendMessage("Data petugas gagal ditambah", "Gagal");
+                helper.sendMessage("Data member gagal ditambah", "Gagal");
             }
-            disableEnablePetugas(false);
-            viewDataPetugas();
+            disableEnableMember(false);
+            viewDataMember();
         }
-    }//GEN-LAST:event_jButtonPetugasTambahActionPerformed
 
-    private void jButtonPetugasEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPetugasEditActionPerformed
+    }//GEN-LAST:event_jButtonMemberTambahActionPerformed
+
+    private void jComboBoxTransaksiJenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxTransaksiJenisActionPerformed
         // TODO add your handling code here:
-        int idPetugas = listPetugas.get(jTablePetugas.getSelectedRow()).getIdPetugas();
-        String nama = jTextFieldPetugasNama.getText();
-        String alamat = jTextAreaPetugasAlamat.getText() ;
-        String noKtp = jTextFieldPetugasNoKtp.getText();
-        String noHp = jTextFieldPetugasNoHp.getText();
-        String username = jTextFieldPetugasUsername.getText();
-        String password = jPasswordFieldPetugasPassword.getText();
-        String tempatLahir = jTextFieldPetugasTempat.getText();
-        Date tanggal = (Date)jSpinnerPetugasTanggal.getValue();
-        java.sql.Date tanggaLahir = new java.sql.Date(tanggal.getTime());
-        int gaji = (int)jSpinnerPetugasGaji.getValue();
-        String privilege = "";
-        switch(jComboBoxPetugasPrivelege.getSelectedIndex()){
-            case 0 :
-                privilege = "Admin";
-                break;
-            case 1 :
-                privilege = "Petugas";
-                break;
-        }
-        if(nama.equals("")||alamat.equals("")||noKtp.equals("")||noHp.equals("")
-           ||username.equals("")||password.equals("")||privilege.equals("")||tanggaLahir.equals("")||gaji==0){
-            helper.sendMessage("Data harus diisi semua", "Gagal");
+        if(jComboBoxTransaksiJenis.getSelectedIndex()==0){
+            setSpinnerJumlahKelompok(false);
         }else{
-            password = auth.encodeToMD5(jPasswordFieldPetugasPassword.getText());
-            Petugas petugas = new Petugas(idPetugas,nama, alamat, noKtp, noHp, username, password, privilege, tempatLahir, tanggaLahir, gaji);
-            if(petugasController.updatePetugas(petugas)){
-                helper.sendMessage("Data petugas berhasil di edit", "Berhasil");
-            }else{
-                helper.sendMessage("Data petugas gagal di edit", "Gagal");
-            }
-            disableEnablePetugas(false);
-            viewDataPetugas();
+            setSpinnerJumlahKelompok(true);
         }
-    }//GEN-LAST:event_jButtonPetugasEditActionPerformed
-
-    private void jButtonPetugasHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPetugasHapusActionPerformed
-        // TODO add your handling code here:
-        Petugas petugas = listPetugas.get(jTablePetugas.getSelectedRow());
-        if(petugasController.deletePetugas(petugas)){
-            helper.sendMessage("Data petugas berhasil dihapus", "Berhasil");
-        }else{
-            helper.sendMessage("Data petugas gagal dihapus", "Gagal");
-        }
-        disableEnablePetugas(false);
-        viewDataPetugas();
-    }//GEN-LAST:event_jButtonPetugasHapusActionPerformed
-
-    private void jButtonPetugasEnDiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPetugasEnDiActionPerformed
-        // TODO add your handling code here:
-        disableEnablePetugas(false);
-        jTablePetugas.clearSelection();
-    }//GEN-LAST:event_jButtonPetugasEnDiActionPerformed
-
-    private void jTablePetugasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTablePetugasMouseClicked
-        // TODO add your handling code here:
-        Petugas petugas = listPetugas.get(jTablePetugas.getSelectedRow());
-        jTextFieldPetugasNama.setText(petugas.getNama());
-        jTextFieldPetugasNoKtp.setText(petugas.getNoKtp());
-        jTextFieldPetugasNoHp.setText(petugas.getNoHp());
-        jTextFieldPetugasUsername.setText(petugas.getUsername());
-        jTextAreaPetugasAlamat.setText(petugas.getAlamat());
-        int selectedIndex = 0;
-        switch(petugas.getPrivilege()){
-            case "Admin" :
-                selectedIndex = 0;
-                break;
-            case "Petugas" :
-                selectedIndex = 1;
-                break;
-        }
-        jComboBoxPetugasPrivelege.setSelectedIndex(selectedIndex);
-        jTextFieldPetugasTempat.setText(petugas.getTempatLahir());
-        jSpinnerPetugasGaji.setValue(petugas.getGaji());
-        jSpinnerPetugasTanggal.setValue(petugas.getTanggalLahir());
-        disableEnablePetugas(true);
-    }//GEN-LAST:event_jTablePetugasMouseClicked
-
-    private void jButtonPetugasPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPetugasPrintActionPerformed
-        helper.printTable("Laporan Petugas", jTablePetugas);
-
-    }//GEN-LAST:event_jButtonPetugasPrintActionPerformed
-
-    private void jButtonTWTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTWTambahActionPerformed
-        // TODO add your handling code here:
-        String nama = jTextFieldTWNama.getText();
-        String lokasi = jTextAreaTWLokasi.getText() ;
-        String deskripsi = jTextAreaTWDeskripsi.getText();
-        String latlong = jTextFieldTWLatLong.getText();
-       if(nama.equals("")||lokasi.equals("")||deskripsi.equals("")||latlong.equals("")){
-            helper.sendMessage("Data harus diisi semua", "Gagal");
-        }else{
-           TempatWisata tw = new TempatWisata(nama, lokasi, deskripsi, latlong);
-            if(twController.addTempatWisata(tw)){
-                helper.sendMessage("Data tempat wisata berhasil ditambah", "Berhasil");
-            }else{
-                helper.sendMessage("Data tempat wisata gagal ditambah", "Gagal");
-            }
-            disableEnableTW(false);
-            viewDataTempatWisata();
-        }
-
-    }//GEN-LAST:event_jButtonTWTambahActionPerformed
-
-    private void jButtonTWEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTWEditActionPerformed
-        // TODO add your handling code here:
-        int idTempatWisata = listTempatWisata.get(jTableTW.getSelectedRow()).getIdTempatWisata();
-        String nama = jTextFieldTWNama.getText();
-        String lokasi = jTextAreaTWLokasi.getText() ;
-        String deskripsi = jTextAreaTWDeskripsi.getText();
-        String latlong = jTextFieldTWLatLong.getText();
-       if(nama.equals("")||lokasi.equals("")||deskripsi.equals("")||latlong.equals("")){
-            helper.sendMessage("Data harus diisi semua", "Gagal");
-        }else{
-           TempatWisata tw = new TempatWisata(idTempatWisata, nama, lokasi, deskripsi, latlong);
-            if(twController.updateTempatWisata(tw)){
-                helper.sendMessage("Data tempat wisata berhasil di edit", "Berhasil");
-            }else{
-                helper.sendMessage("Data tempat wisata gagal di edit", "Gagal");
-            }
-            disableEnableTW(false);
-            viewDataTempatWisata();
-        }
-    }//GEN-LAST:event_jButtonTWEditActionPerformed
-
-    private void jButtonTWHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTWHapusActionPerformed
-        // TODO add your handling code here:
-        TempatWisata tw = listTempatWisata.get(jTableTW.getSelectedRow());
-        if(twController.deleteTempatWisata(tw)){
-            helper.sendMessage("Data tempat wisata berhasil dihapus", "Berhasil");
-        }else{
-            helper.sendMessage("Data tempat wisata gagal dihapus", "Gagal");
-        }
-        disableEnableTW(false);
-        viewDataTempatWisata();
-    }//GEN-LAST:event_jButtonTWHapusActionPerformed
-
-    private void jButtonTWEnDiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTWEnDiActionPerformed
-        // TODO add your handling code here:
-        disableEnableTW(false);
-        jTableTW.clearSelection();
-    }//GEN-LAST:event_jButtonTWEnDiActionPerformed
-
-    private void jButtonTWPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTWPrintActionPerformed
-        // TODO add your handling code here:
-        helper.printTable("Laporan Tempat Wisata", jTableTW);
-    }//GEN-LAST:event_jButtonTWPrintActionPerformed
-
-    private void jTableTWMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableTWMouseClicked
-        TempatWisata tw = listTempatWisata.get(jTableTW.getSelectedRow());
-        jTextFieldTWNama.setText(tw.getNama());
-        jTextFieldTWLatLong.setText(tw.getLatlong());
-        jTextAreaTWDeskripsi.setText(tw.getDeskripsi());
-        jTextAreaTWLokasi.setText(tw.getLokasi());
-        disableEnableTW(true);
-    }//GEN-LAST:event_jTableTWMouseClicked
-
-    private void jButtonTWLokasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTWLokasiActionPerformed
-        // TODO add your handling code here:
-        String latlong = jTextFieldTWLatLong.getText();
-        if(helper.cekKoneksi()){
-            if(!(latlong.equals(""))){
-                new Lokasi(latlong).setVisible(true);
-            }else{
-                helper.sendMessage("Pilih dari tabel dulu", "Gagal");
-            }
-        }else{
-            helper.sendMessage("Periksa Koneksi anda", "Gagal");
-        }
-        
-        
-    }//GEN-LAST:event_jButtonTWLokasiActionPerformed
-
-    private void jButtonMemberPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMemberPrintActionPerformed
-        // TODO add your handling code here:
-        helper.printTable("Laporan Member", jTableMember);
-    }//GEN-LAST:event_jButtonMemberPrintActionPerformed
-
-    private void jButtonPWTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPWTambahActionPerformed
-        // TODO add your handling code here:
-        TempatWisata tp = (TempatWisata)jComboBoxPWTempat.getSelectedItem();
-        int idTempatWisata = tp.getIdTempatWisata();
-        String nama = jTextFieldPWNama.getText();
-        int batasPeserta = (int)jSpinnerPWBatas.getValue();
-        double harga = (double)jSpinnerPWHarga.getValue();
-        int jumlahPaket = (int)jSpinnerPWJumlah.getValue();
-        int lamaHari = (int)jSpinnerPWLama.getValue();
-        String fasilitas = jTextAreaPWFasilitas.getText();
-        
-        if(nama.equals("")||batasPeserta==0||harga==0||jumlahPaket==0||lamaHari==0||fasilitas.equals("")){
-            helper.sendMessage("Data harus diisi semua", "Gagal");
-        }else{
-            PaketWisata pw = new PaketWisata(nama, batasPeserta, harga, idTempatWisata, jumlahPaket, lamaHari, fasilitas);
-            if(pwController.addPaketWisata(pw)){
-                helper.sendMessage("Data paket wisata berhasil di tambah", "Berhasil");
-            }else{
-                helper.sendMessage("Data paket wisata gagal di tambah", "Gagal");
-            }
-            disableEnablePaketWisata(false);
-            viewDataPaketWisata();
-        }
-    
-    }//GEN-LAST:event_jButtonPWTambahActionPerformed
-
-    private void jButtonPWEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPWEditActionPerformed
-        // TODO add your handling code here:
-        TempatWisata tp = (TempatWisata)jComboBoxPWTempat.getSelectedItem();
-        int idTempatWisata = tp.getIdTempatWisata();
-        
-        String nama = jTextFieldPWNama.getText();
-        int batasPeserta = (int)jSpinnerPWBatas.getValue();
-        double harga = (double)jSpinnerPWHarga.getValue();
-        int jumlahPaket = (int)jSpinnerPWJumlah.getValue();
-        int lamaHari = (int)jSpinnerPWLama.getValue();
-        String fasilitas = jTextAreaPWFasilitas.getText();
-        int idPaketWisata = listPaketWisata.get(jTablePaketWisata.getSelectedRow()).getIdPaketWisata();
-//        System.out.println(idPaketWisata);
-        if(nama.equals("")||batasPeserta==0||harga==0||jumlahPaket==0||lamaHari==0||fasilitas.equals("")){
-            helper.sendMessage("Data harus diisi semua", "Gagal");
-        }else{
-            PaketWisata pw = new PaketWisata(idPaketWisata, nama, batasPeserta, harga, idTempatWisata, jumlahPaket, lamaHari, fasilitas);
-            if(pwController.updatePaketWisata(pw)){
-                helper.sendMessage("Data paket wisata berhasil di edit", "Berhasil");
-            }else{
-                helper.sendMessage("Data paket wisata gagal di edit", "Gagal");
-            }
-            disableEnablePaketWisata(false);
-            viewDataPaketWisata();
-        }
-        
-    }//GEN-LAST:event_jButtonPWEditActionPerformed
-
-    private void jButtonPWHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPWHapusActionPerformed
-        // TODO add your handling code here:
-        PaketWisata pw = listPaketWisata.get(jTablePaketWisata.getSelectedRow());
-        if(pwController.deletePaketWisata(pw)){
-            helper.sendMessage("Data paket wisata berhasil dihapus", "Berhasil");
-        }else{
-            helper.sendMessage("Data paket wisata gagal dihapus", "Gagal");
-        }
-        disableEnablePaketWisata(false);
-        viewDataPaketWisata();
-    }//GEN-LAST:event_jButtonPWHapusActionPerformed
-
-    private void jButtonPWEnDiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPWEnDiActionPerformed
-        // TODO add your handling code here:
-        disableEnablePaketWisata(false);
-        jTablePaketWisata.clearSelection();
-    }//GEN-LAST:event_jButtonPWEnDiActionPerformed
-
-    private void jButtonPWPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPWPrintActionPerformed
-        // TODO add your handling code here:
-        helper.printTable("Laporan Paket Wisata", jTablePaketWisata);
-    }//GEN-LAST:event_jButtonPWPrintActionPerformed
-
-    private void jTablePaketWisataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTablePaketWisataMouseClicked
-        // TODO add your handling code here:
-        PaketWisata p = listPaketWisata.get(jTablePaketWisata.getSelectedRow());
-        jTextFieldPWNama.setText(p.getNama());
-        jSpinnerPWBatas.setValue(p.getBatasPeserta());
-        jSpinnerPWHarga.setValue(p.getHarga());
-        jSpinnerPWJumlah.setValue(p.getJumlahPaket());
-        jSpinnerPWLama.setValue(p.getLamaHari());
-        for(int i=0;i<listTempatWisata.size();i++){
-            if(listTempatWisata.get(i).getIdTempatWisata()==p.getIdTempatWisata()){
-                   jComboBoxPWTempat.setSelectedIndex(i);
-                   break;
-            }
-        }
-        jTextAreaPWFasilitas.setText(p.getFasilitas());
-        disableEnablePaketWisata(true);
-    }//GEN-LAST:event_jTablePaketWisataMouseClicked
+    }//GEN-LAST:event_jComboBoxTransaksiJenisActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1842,9 +2160,20 @@ public class MenuUtama extends javax.swing.JFrame {
     private javax.swing.JButton jButtonTWLokasi;
     private javax.swing.JButton jButtonTWPrint;
     private javax.swing.JButton jButtonTWTambah;
+    private javax.swing.JButton jButtonTransaksiChart;
+    private javax.swing.JButton jButtonTransaksiEdit;
+    private javax.swing.JButton jButtonTransaksiEnDi;
+    private javax.swing.JButton jButtonTransaksiHapus;
+    private javax.swing.JButton jButtonTransaksiPrint;
+    private javax.swing.JButton jButtonTransaksiTambah;
     private javax.swing.JComboBox jComboBoxMemberPrivelege;
     private javax.swing.JComboBox jComboBoxPWTempat;
     private javax.swing.JComboBox jComboBoxPetugasPrivelege;
+    private javax.swing.JComboBox jComboBoxTransaksiJenis;
+    private javax.swing.JComboBox jComboBoxTransaksiMember;
+    private javax.swing.JComboBox jComboBoxTransaksiPaket;
+    private javax.swing.JComboBox jComboBoxTransaksiPetugas;
+    private javax.swing.JComboBox jComboBoxTransaksiStatus;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -1865,9 +2194,17 @@ public class MenuUtama extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1892,9 +2229,12 @@ public class MenuUtama extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel23;
     private javax.swing.JPanel jPanel24;
     private javax.swing.JPanel jPanel25;
+    private javax.swing.JPanel jPanel26;
+    private javax.swing.JPanel jPanel27;
+    private javax.swing.JPanel jPanel28;
+    private javax.swing.JPanel jPanel29;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
@@ -1902,6 +2242,7 @@ public class MenuUtama extends javax.swing.JFrame {
     private javax.swing.JPasswordField jPasswordFieldMemberPassword;
     private javax.swing.JPasswordField jPasswordFieldPetugasPassword;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -1916,11 +2257,15 @@ public class MenuUtama extends javax.swing.JFrame {
     private javax.swing.JSpinner jSpinnerPWLama;
     private javax.swing.JSpinner jSpinnerPetugasGaji;
     private javax.swing.JSpinner jSpinnerPetugasTanggal;
+    private javax.swing.JSpinner jSpinnerTransaksiJmlKel;
+    private javax.swing.JSpinner jSpinnerTransaksiJmlOrang;
+    private javax.swing.JSpinner jSpinnerTransaksiTanggal;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTableMember;
     private javax.swing.JTable jTablePaketWisata;
     private javax.swing.JTable jTablePetugas;
     private javax.swing.JTable jTableTW;
+    private javax.swing.JTable jTableTransaksi;
     private javax.swing.JTextArea jTextAreaMemberAlamat;
     private javax.swing.JTextArea jTextAreaPWFasilitas;
     private javax.swing.JTextArea jTextAreaPetugasAlamat;

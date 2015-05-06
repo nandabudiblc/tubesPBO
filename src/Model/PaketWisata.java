@@ -45,6 +45,10 @@ public class PaketWisata {
         this.fasilitas = fasilitas;
     }
 
+    @Override
+     public String toString(){
+         return this.getNama();
+     }
     /**
      * @return the idPaketWisata
      */

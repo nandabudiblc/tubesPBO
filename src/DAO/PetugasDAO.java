@@ -32,7 +32,7 @@ public class PetugasDAO extends ConnectionDB {
     public boolean addPetugas(Petugas petugas){
         boolean isSuccess = false;
         try {
-            System.out.println(petugas.getTanggalLahir().toString());
+//            System.out.println(petugas.getTanggalLahir().toString());
             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO `travel`.`petugas` (`id_petugas`, `nama`, `alamat`, `no_ktp`, `no_hp`, `username`, `password`, `privilege`, `tempat_lahir`, `tanggal_lahir`, `gaji`) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             preparedStatement.setString(1, petugas.getNama());  
             preparedStatement.setString(2, petugas.getAlamat());  

@@ -7,7 +7,10 @@
 package Controller;
 import DAO.MemberDAO;
 import Model.Member;
+import Model.Petugas;
 import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 /**
@@ -49,6 +52,12 @@ public class MemberController {
         return isSuccess;
     }
    
-    
+    public void populateDatatoJComboboxMember(ArrayList<Member> listMember, JComboBox jComboBoxMember) {
+    DefaultComboBoxModel comboBoxModel = new DefaultComboBoxModel();
+    for (final Member member : listMember) {
+                comboBoxModel.addElement(member);
+        }
+    jComboBoxMember.setModel(comboBoxModel);
+    }
 
 }

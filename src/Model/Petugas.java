@@ -50,6 +50,11 @@ public class Petugas extends Person{
         this.setAlamat(alamat);
         
     }
+    
+    @Override
+    public String toString(){
+        return this.getNama();
+    }
     /**
      * @return the idPetugas
      */
