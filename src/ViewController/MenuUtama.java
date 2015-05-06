@@ -22,10 +22,12 @@ public class MenuUtama extends javax.swing.JFrame {
     PetugasController petugasController;
     TempatWisataController twController;
     PaketWisataController pwController;
+    TransaksiController transaksiController;
     ArrayList<Member> listMember;
     ArrayList<Petugas> listPetugas;
     ArrayList<TempatWisata> listTempatWisata;
     ArrayList<PaketWisata> listPaketWisata;
+    ArrayList<Transaksi> listTransaksi;
     Auth auth;
 
     /**
@@ -37,6 +39,7 @@ public class MenuUtama extends javax.swing.JFrame {
         petugasController = new PetugasController();
         twController= new TempatWisataController();
         pwController = new PaketWisataController();
+        transaksiController = new TransaksiController();
         helper = new Helper();
         auth = new Auth();
         viewDataMember();
@@ -50,6 +53,8 @@ public class MenuUtama extends javax.swing.JFrame {
         helper.setSpinnerDate(jSpinnerTransaksiTanggal, "dd-MM-yyyy");
         disableEnablePaketWisata(false);
         setSpinnerJumlahKelompok(false);
+        disableEnableTransaksi(false);
+        viewDataTransaksi();
     }
 
     private void setSpinnerJumlahKelompok(boolean status){
@@ -215,6 +220,26 @@ public class MenuUtama extends javax.swing.JFrame {
         jTablePaketWisata.setModel(new DefaultTableModel(data, title));
         pwController.populateDatatoJComboboxPW(listPaketWisata, jComboBoxTransaksiPaket);
     }
+
+     private void viewDataTransaksi(){
+        listTransaksi = transaksiController.getAllTransaksi();
+        String[] title = {"No","Member","Petugas","Paket","Jenis Pesan","Jum.Kelompok", "Jum. Orang","Status","Tanggal"};
+        String[][] data = new String[listTransaksi.size()][9];
+        for(int i=0;i<listTransaksi.size();i++){
+            Transaksi t = listTransaksi.get(i);
+            data[i][0] = String.valueOf(i+1);
+            data[i][1] = t.getNamaMember();
+            data[i][2] = t.getNamaPetugas();
+            data[i][3] = t.getNamaPaket();
+            data[i][4] = t.getJenis_pesan();
+            data[i][5] = String.valueOf(t.getJumlah_kelompok());
+            data[i][6] = String.valueOf(t.getJumlah_orang());
+            data[i][7] = t.getStatus();
+            data[i][8] = t.getTanggal().toString();
+        }
+        jTableTransaksi.setModel(new DefaultTableModel(data, title));
+    }
+     
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -1654,6 +1679,47 @@ public class MenuUtama extends javax.swing.JFrame {
 
     private void jTableTransaksiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableTransaksiMouseClicked
         // TODO add your handling code here:
+        Transaksi t = listTransaksi.get(jTableTransaksi.getSelectedRow());
+        jSpinnerTransaksiJmlKel.setValue(t.getJumlah_kelompok());
+        jSpinnerTransaksiJmlOrang.setValue(t.getJumlah_orang());
+        jSpinnerTransaksiTanggal.setValue(t.getTanggal());
+        switch(t.getJenis_pesan()){
+            case "Perorangan":
+                jComboBoxTransaksiJenis.setSelectedIndex(0);
+                break;
+            case "Kelompok":
+                jComboBoxTransaksiJenis.setSelectedIndex(1);
+                break;
+        }
+        switch(t.getStatus()){
+            case "Jadi":
+                jComboBoxTransaksiStatus.setSelectedIndex(0);
+                break;
+            case "Batal":
+                jComboBoxTransaksiStatus.setSelectedIndex(1);
+                break;
+        }
+        
+        for(int i=0;i<listPetugas.size();i++){
+            if(listPetugas.get(i).getIdPetugas()==t.getId_petugas()){
+                jComboBoxTransaksiPetugas.setSelectedIndex(i);
+                break;
+            }
+        }
+        for(int i=0;i<listMember.size();i++){
+            if(listMember.get(i).getIdMember()==t.getId_member()){
+                jComboBoxTransaksiMember.setSelectedIndex(i);
+                break;
+            }
+        }
+        for(int i=0;i<listPaketWisata.size();i++){
+            if(listPaketWisata.get(i).getIdPaketWisata()==t.getId_paketwisata()){
+                jComboBoxTransaksiPaket.setSelectedIndex(i);
+                break;
+            }
+        }
+        
+        disableEnableTransaksi(true);
     }//GEN-LAST:event_jTableTransaksiMouseClicked
 
     private void jButtonTransaksiChartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTransaksiChartActionPerformed
@@ -1662,22 +1728,115 @@ public class MenuUtama extends javax.swing.JFrame {
 
     private void jButtonTransaksiPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTransaksiPrintActionPerformed
         // TODO add your handling code here:
+        helper.printTable("Laporan Transaksi", jTableTransaksi);
     }//GEN-LAST:event_jButtonTransaksiPrintActionPerformed
 
     private void jButtonTransaksiEnDiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTransaksiEnDiActionPerformed
         // TODO add your handling code here:
+        disableEnableTransaksi(false);
+        jTableTransaksi.clearSelection();
     }//GEN-LAST:event_jButtonTransaksiEnDiActionPerformed
 
     private void jButtonTransaksiHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTransaksiHapusActionPerformed
         // TODO add your handling code here:
+        // TODO add your handling code here:
+        Transaksi transaksi = listTransaksi.get(jTableTransaksi.getSelectedRow());
+        if(transaksiController.deleteTransaksi(transaksi)){
+            helper.sendMessage("Data transaksi berhasil dihapus", "Berhasil");
+        }else{
+            helper.sendMessage("Data transaksi gagal dihapus", "Gagal");
+        }
+        disableEnableTransaksi(false);
+        viewDataTransaksi();
     }//GEN-LAST:event_jButtonTransaksiHapusActionPerformed
 
     private void jButtonTransaksiEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTransaksiEditActionPerformed
         // TODO add your handling code here:
+                Member m = (Member)jComboBoxTransaksiMember.getSelectedItem();
+        Petugas p = (Petugas)jComboBoxTransaksiPetugas.getSelectedItem();
+        PaketWisata pk = (PaketWisata)jComboBoxTransaksiPaket.getSelectedItem();
+        int idMember = m.getIdMember();
+        int idPetugas = p.getIdPetugas();
+        int idPaketWisata = pk.getIdPaketWisata();
+        String jenis = "";
+        switch(jComboBoxTransaksiJenis.getSelectedIndex()){
+            case 0:
+                jenis = "Perorangan";
+                break;
+            case 1:
+                jenis = "Kelompok";
+                break;
+        }
+        int jumlahKel = (int)jSpinnerTransaksiJmlKel.getValue();
+        int jumlahOrang = (int)jSpinnerTransaksiJmlOrang.getValue();
+        String status = "";
+        switch(jComboBoxTransaksiStatus.getSelectedIndex()){
+            case 0:
+                status = "Jadi";
+                break;
+            case 1:
+                status = "Batal";
+                break;
+        }
+        Date tgl = (Date)jSpinnerTransaksiTanggal.getValue();
+        java.sql.Date tanggal = new java.sql.Date(tgl.getTime());
+        int idTransaksi = listTransaksi.get(jTableTransaksi.getSelectedRow()).getId_transaksi();
+        if(idMember==0||idPaketWisata==0||idPetugas==0||jenis.equals("")||status.equals("")||jumlahOrang==0){
+            helper.sendMessage("Data harus diisi semua", "Gagal");
+        }else{
+            Transaksi t = new Transaksi(idTransaksi,idPetugas, idMember, idPaketWisata, jenis, jumlahKel, jumlahOrang, status, tanggal);
+            if(transaksiController.updateTransaksi(t)){
+                helper.sendMessage("Data transaksi berhasil di edit", "Berhasil");
+            }else{
+                helper.sendMessage("Data transaksi gagal di edit", "Gagal");
+            }
+            disableEnableTransaksi(false);
+            viewDataTransaksi();
+        }
     }//GEN-LAST:event_jButtonTransaksiEditActionPerformed
 
     private void jButtonTransaksiTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTransaksiTambahActionPerformed
         // TODO add your handling code here:
+        Member m = (Member)jComboBoxTransaksiMember.getSelectedItem();
+        Petugas p = (Petugas)jComboBoxTransaksiPetugas.getSelectedItem();
+        PaketWisata pk = (PaketWisata)jComboBoxTransaksiPaket.getSelectedItem();
+        int idMember = m.getIdMember();
+        int idPetugas = p.getIdPetugas();
+        int idPaketWisata = pk.getIdPaketWisata();
+        String jenis = "";
+        switch(jComboBoxTransaksiJenis.getSelectedIndex()){
+            case 0:
+                jenis = "Perorangan";
+                break;
+            case 1:
+                jenis = "Kelompok";
+                break;
+        }
+        int jumlahKel = (int)jSpinnerTransaksiJmlKel.getValue();
+        int jumlahOrang = (int)jSpinnerTransaksiJmlOrang.getValue();
+        String status = "";
+        switch(jComboBoxTransaksiStatus.getSelectedIndex()){
+            case 0:
+                status = "Jadi";
+                break;
+            case 1:
+                status = "Batal";
+                break;
+        }
+        Date tgl = (Date)jSpinnerTransaksiTanggal.getValue();
+        java.sql.Date tanggal = new java.sql.Date(tgl.getTime());
+        if(idMember==0||idPaketWisata==0||idPetugas==0||jenis.equals("")||status.equals("")||jumlahOrang==0){
+            helper.sendMessage("Data harus diisi semua", "Gagal");
+        }else{
+            Transaksi t = new Transaksi(idPetugas, idMember, idPaketWisata, jenis, jumlahKel, jumlahOrang, status, tanggal);
+            if(transaksiController.addTransaksi(t)){
+                helper.sendMessage("Data transaksi berhasil di tambah", "Berhasil");
+            }else{
+                helper.sendMessage("Data transaksi gagal di tambah", "Gagal");
+            }
+            disableEnableTransaksi(false);
+            viewDataTransaksi();
+        }
     }//GEN-LAST:event_jButtonTransaksiTambahActionPerformed
 
     private void jTablePaketWisataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTablePaketWisataMouseClicked

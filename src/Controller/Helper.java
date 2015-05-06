@@ -70,7 +70,7 @@ public class Helper {
     
     public void setImage(String latlong, JLabel jLabelImage){
             try {
-            String imageUrl = "https://maps.googleapis.com/maps/api/staticmap?center="+latlong+"&zoom=14&size=612x612&scale=2&maptype=roadmap&markers="+latlong+"&key=ABQIAAAAgb5KEVTm54vkPcAkU9xOvBR30EG5jFWfUzfYJTWEkWk2p04CHxTGDNV791-cU95kOnweeZ0SsURYSA&format=jpg";
+            String imageUrl = "https://maps.googleapis.com/maps/api/staticmap?center="+latlong+"&zoom=14&size=315x315&scale=2&maptype=roadmap&markers="+latlong+"&key=ABQIAAAAgb5KEVTm54vkPcAkU9xOvBR30EG5jFWfUzfYJTWEkWk2p04CHxTGDNV791-cU95kOnweeZ0SsURYSA&format=jpg";
             //String imageUrl = "https://maps.googleapis.com/maps/api/staticmap?center=-6.975837,107.631359&zoom=14&size=612x612&scale=2&maptype=roadmap&markers=-6.975837,107.631359&key=ABQIAAAAgb5KEVTm54vkPcAkU9xOvBR30EG5jFWfUzfYJTWEkWk2p04CHxTGDNV791-cU95kOnweeZ0SsURYSA&format=jpg";
             String destinationFile = "image.jpg";
             String str = destinationFile;
@@ -91,7 +91,7 @@ public class Helper {
             e.printStackTrace();
             
         }
-        ImageIcon imageIcon = new ImageIcon((new ImageIcon("image.jpg")).getImage().getScaledInstance(630, 600,
+        ImageIcon imageIcon = new ImageIcon((new ImageIcon("image.jpg")).getImage().getScaledInstance(315, 300,
                 java.awt.Image.SCALE_SMOOTH));
         jLabelImage.setIcon(imageIcon);
 
