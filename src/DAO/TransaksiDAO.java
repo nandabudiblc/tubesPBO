@@ -13,7 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
+import Model.Chart;
 
 /**
  *
@@ -112,7 +112,22 @@ public class TransaksiDAO extends ConnectionDB {
         }
         return listTransaksi;
     }
-    public Transaksi getTransaksiById(int idTransaksi){
-        return null;
+    public ArrayList<Chart> getTransaksiByTempatWisata(){
+        ArrayList<Chart> listDataChart = new ArrayList<>();
+        try{
+            Statement stmt = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            String sql = "SELECT count(*) as count,tw.nama FROM `transaksi` t, paketwisata pk, tempatwisata tw WHERE pk.id_paketwisata = t.id_paketwisata and pk.id_tempatwisata = tw.id_tempatwisata group by tw.id_tempatwisata";
+            ResultSet rs = stmt.executeQuery(sql);
+            while(rs.next()){
+                Chart chart = new Chart();
+                chart.setCount(rs.getInt("count"));
+                chart.setNama(rs.getString("nama"));
+                listDataChart.add(chart);
+            }
+        } catch (SQLException error){
+                error.getMessage();
+        }
+        return listDataChart;
     }
+    
 }

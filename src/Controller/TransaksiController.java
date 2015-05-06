@@ -6,6 +6,7 @@
 
 package Controller;
 import DAO.TransaksiDAO;
+import Model.Chart;
 import Model.Transaksi;
 import java.util.ArrayList;
 /**
@@ -31,6 +32,10 @@ public class TransaksiController {
         return transaksiDAO.getAllTransaksi();
     }
     
+    public ArrayList<Chart> getTransaksiByTempatWisata(){
+        return transaksiDAO.getTransaksiByTempatWisata();
+    }
+    
     public boolean deleteTransaksi(Transaksi transaksi){
         boolean isSuccess = false;
         if(transaksiDAO.deleteTransaksi(transaksi)){
@@ -46,5 +51,6 @@ public class TransaksiController {
         }
         return isSuccess;
     }
+    
 
 }

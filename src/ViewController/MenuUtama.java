@@ -1724,6 +1724,9 @@ public class MenuUtama extends javax.swing.JFrame {
 
     private void jButtonTransaksiChartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTransaksiChartActionPerformed
         // TODO add your handling code here:
+        PieChart chart = new PieChart("Laporan", "Laporan Pelanggan Berdasar Tempat Wisata",transaksiController.getTransaksiByTempatWisata());
+        chart.pack();
+        chart.setVisible(true);
     }//GEN-LAST:event_jButtonTransaksiChartActionPerformed
 
     private void jButtonTransaksiPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTransaksiPrintActionPerformed
