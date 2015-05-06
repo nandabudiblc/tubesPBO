@@ -17,10 +17,14 @@ public class TempatWisata {
     private String deskripsi;
     private String latlong;
 
+    public TempatWisata(int idTempatWisata,String nama){
+        this.idTempatWisata = idTempatWisata;
+        this.nama = nama;
+    }
+    
     public TempatWisata(){
         
     }
-    
     public TempatWisata(int idTempatWisata,String nama,String lokasi,String deskripsi,String latlong){
         this.idTempatWisata = idTempatWisata;
         this.nama = nama;
@@ -34,6 +38,10 @@ public class TempatWisata {
         this.lokasi = lokasi;
         this.deskripsi = deskripsi;
         this.latlong = latlong;
+    }
+    @Override
+    public String toString(){
+        return this.nama;
     }
     /**
      * @return the idTempatWisata

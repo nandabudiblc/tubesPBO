@@ -53,14 +53,8 @@ public class TempatWisataController {
     public void populateDatatoJComboboxTWTempat(ArrayList<TempatWisata> listTempatWisata, JComboBox jComboBoxPWTempat) {
         comboBoxModel = new DefaultComboBoxModel();
         for (final TempatWisata tempatWisata : listTempatWisata) {
-            EventQueue.invokeLater(new Runnable() {
-
-                @Override
-                public void run() {// updates to the Swing GUI must be done on EDT
-                    comboBoxModel.addElement(tempatWisata.getNama());
-                }
-            });
-        }
+                    comboBoxModel.addElement(tempatWisata);
+            }
         jComboBoxPWTempat.setModel(comboBoxModel);
     }
     

@@ -19,7 +19,7 @@ public class PaketWisata {
     private int jumlahPaket;
     private int lamaHari;
     private String fasilitas;
-    
+    private String tempatWisata;
     
     public PaketWisata(){
         
@@ -155,6 +155,20 @@ public class PaketWisata {
      */
     public void setFasilitas(String fasilitas) {
         this.fasilitas = fasilitas;
+    }
+
+    /**
+     * @return the tempatWisata
+     */
+    public String getTempatWisata() {
+        return tempatWisata;
+    }
+
+    /**
+     * @param tempatWisata the tempatWisata to set
+     */
+    public void setTempatWisata(String tempatWisata) {
+        this.tempatWisata = tempatWisata;
     }
     
 }

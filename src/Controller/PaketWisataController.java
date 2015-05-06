@@ -21,7 +21,7 @@ public class PaketWisataController {
         paketWisataDAO = new PaketWisataDAO();
     }
     
-    public boolean addTempatWisata(PaketWisata paketWisata){
+    public boolean addPaketWisata(PaketWisata paketWisata){
         boolean isSuccess = false;
         if(paketWisataDAO.addPaketWisata(paketWisata)){
             isSuccess = true;
@@ -29,11 +29,11 @@ public class PaketWisataController {
         return isSuccess;
     }
     
-    public ArrayList<PaketWisata> getAllTempatWisata(){
+    public ArrayList<PaketWisata> getAllPaketWisata(){
         return paketWisataDAO.getAllPaketWisata();
     }
     
-    public boolean deleteTempatWisata(PaketWisata paketWisata){
+    public boolean deletePaketWisata(PaketWisata paketWisata){
         boolean isSuccess = false;
         if(paketWisataDAO.deletePaketWisata(paketWisata)){
             isSuccess = true;
@@ -41,7 +41,7 @@ public class PaketWisataController {
         return isSuccess;
     }
     
-    public boolean updateTempatWisata(PaketWisata paketWisata){
+    public boolean updatePaketWisata(PaketWisata paketWisata){
         boolean isSuccess = false;
         if(paketWisataDAO.updatePaketWisata(paketWisata)){
             isSuccess = true;

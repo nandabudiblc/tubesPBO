@@ -21,10 +21,11 @@ public class MenuUtama extends javax.swing.JFrame {
     MemberController memberController;
     PetugasController petugasController;
     TempatWisataController twController;
-    
+    PaketWisataController pwController;
     ArrayList<Member> listMember;
     ArrayList<Petugas> listPetugas;
     ArrayList<TempatWisata> listTempatWisata;
+    ArrayList<PaketWisata> listPaketWisata;
     Auth auth;
 
     /**
@@ -35,7 +36,7 @@ public class MenuUtama extends javax.swing.JFrame {
         memberController = new MemberController();
         petugasController = new PetugasController();
         twController= new TempatWisataController();
-        
+        pwController = new PaketWisataController();
         helper = new Helper();
         auth = new Auth();
         viewDataMember();
@@ -44,8 +45,9 @@ public class MenuUtama extends javax.swing.JFrame {
         disableEnablePetugas(false);
         viewDataTempatWisata();
         disableEnableTW(false);
+        viewDataPaketWisata();
         helper.setSpinnerDate(jSpinnerPetugasTanggal);
-
+        disableEnablePaketWisata(false);
     }
 
     private void disableEnableMember(boolean status){
@@ -102,7 +104,7 @@ public class MenuUtama extends javax.swing.JFrame {
         }
     }
 
-        private void disableEnablePaketWisata(boolean status){
+    private void disableEnablePaketWisata(boolean status){
         jButtonPWEnDi.setEnabled(status);
         jButtonPWEdit.setEnabled(status);
         jButtonPWHapus.setEnabled(status);
@@ -168,6 +170,24 @@ public class MenuUtama extends javax.swing.JFrame {
         twController.populateDatatoJComboboxTWTempat(listTempatWisata,jComboBoxPWTempat);
     }
     
+    private void viewDataPaketWisata(){
+        listPaketWisata = pwController.getAllPaketWisata();
+        String[] title = {"No","Nama Paket","Peserta","Harga","Tempat Wisata","Jumlah Paket", "Lama Hari"};
+        String[][] data = new String[listPaketWisata.size()][7];
+//            System.out.println(listPaketWisata);
+        for(int i=0;i<listPaketWisata.size();i++){
+            PaketWisata p = listPaketWisata.get(i);
+            data[i][0] = String.valueOf(i+1);
+            data[i][1] = p.getNama();
+            data[i][2] = String.valueOf(p.getBatasPeserta());
+            data[i][3] = String.valueOf(p.getHarga());
+            data[i][4] = p.getTempatWisata();
+            data[i][5] = String.valueOf(p.getJumlahPaket());
+            data[i][6] = String.valueOf(p.getLamaHari());
+        }
+        jTablePaketWisata.setModel(new DefaultTableModel(data, title));
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -1102,7 +1122,7 @@ public class MenuUtama extends javax.swing.JFrame {
 
         jLabel27.setText("Fasilitas");
 
-        jLabel28.setText("Nama");
+        jLabel28.setText("Nama Paket");
 
         javax.swing.GroupLayout jPanel23Layout = new javax.swing.GroupLayout(jPanel23);
         jPanel23.setLayout(jPanel23Layout);
@@ -1672,26 +1692,97 @@ public class MenuUtama extends javax.swing.JFrame {
 
     private void jButtonPWTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPWTambahActionPerformed
         // TODO add your handling code here:
+        TempatWisata tp = (TempatWisata)jComboBoxPWTempat.getSelectedItem();
+        int idTempatWisata = tp.getIdTempatWisata();
+        String nama = jTextFieldPWNama.getText();
+        int batasPeserta = (int)jSpinnerPWBatas.getValue();
+        double harga = (double)jSpinnerPWHarga.getValue();
+        int jumlahPaket = (int)jSpinnerPWJumlah.getValue();
+        int lamaHari = (int)jSpinnerPWLama.getValue();
+        String fasilitas = jTextAreaPWFasilitas.getText();
+        
+        if(nama.equals("")||batasPeserta==0||harga==0||jumlahPaket==0||lamaHari==0||fasilitas.equals("")){
+            helper.sendMessage("Data harus diisi semua", "Gagal");
+        }else{
+            PaketWisata pw = new PaketWisata(nama, batasPeserta, harga, idTempatWisata, jumlahPaket, lamaHari, fasilitas);
+            if(pwController.addPaketWisata(pw)){
+                helper.sendMessage("Data paket wisata berhasil di tambah", "Berhasil");
+            }else{
+                helper.sendMessage("Data paket wisata gagal di tambah", "Gagal");
+            }
+            disableEnablePaketWisata(false);
+            viewDataPaketWisata();
+        }
+    
     }//GEN-LAST:event_jButtonPWTambahActionPerformed
 
     private void jButtonPWEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPWEditActionPerformed
         // TODO add your handling code here:
+        TempatWisata tp = (TempatWisata)jComboBoxPWTempat.getSelectedItem();
+        int idTempatWisata = tp.getIdTempatWisata();
+        
+        String nama = jTextFieldPWNama.getText();
+        int batasPeserta = (int)jSpinnerPWBatas.getValue();
+        double harga = (double)jSpinnerPWHarga.getValue();
+        int jumlahPaket = (int)jSpinnerPWJumlah.getValue();
+        int lamaHari = (int)jSpinnerPWLama.getValue();
+        String fasilitas = jTextAreaPWFasilitas.getText();
+        int idPaketWisata = listPaketWisata.get(jTablePaketWisata.getSelectedRow()).getIdPaketWisata();
+//        System.out.println(idPaketWisata);
+        if(nama.equals("")||batasPeserta==0||harga==0||jumlahPaket==0||lamaHari==0||fasilitas.equals("")){
+            helper.sendMessage("Data harus diisi semua", "Gagal");
+        }else{
+            PaketWisata pw = new PaketWisata(idPaketWisata, nama, batasPeserta, harga, idTempatWisata, jumlahPaket, lamaHari, fasilitas);
+            if(pwController.updatePaketWisata(pw)){
+                helper.sendMessage("Data paket wisata berhasil di edit", "Berhasil");
+            }else{
+                helper.sendMessage("Data paket wisata gagal di edit", "Gagal");
+            }
+            disableEnablePaketWisata(false);
+            viewDataPaketWisata();
+        }
+        
     }//GEN-LAST:event_jButtonPWEditActionPerformed
 
     private void jButtonPWHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPWHapusActionPerformed
         // TODO add your handling code here:
+        PaketWisata pw = listPaketWisata.get(jTablePaketWisata.getSelectedRow());
+        if(pwController.deletePaketWisata(pw)){
+            helper.sendMessage("Data paket wisata berhasil dihapus", "Berhasil");
+        }else{
+            helper.sendMessage("Data paket wisata gagal dihapus", "Gagal");
+        }
+        disableEnablePaketWisata(false);
+        viewDataPaketWisata();
     }//GEN-LAST:event_jButtonPWHapusActionPerformed
 
     private void jButtonPWEnDiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPWEnDiActionPerformed
         // TODO add your handling code here:
+        disableEnablePaketWisata(false);
+        jTablePaketWisata.clearSelection();
     }//GEN-LAST:event_jButtonPWEnDiActionPerformed
 
     private void jButtonPWPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPWPrintActionPerformed
         // TODO add your handling code here:
+        helper.printTable("Laporan Paket Wisata", jTablePaketWisata);
     }//GEN-LAST:event_jButtonPWPrintActionPerformed
 
     private void jTablePaketWisataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTablePaketWisataMouseClicked
         // TODO add your handling code here:
+        PaketWisata p = listPaketWisata.get(jTablePaketWisata.getSelectedRow());
+        jTextFieldPWNama.setText(p.getNama());
+        jSpinnerPWBatas.setValue(p.getBatasPeserta());
+        jSpinnerPWHarga.setValue(p.getHarga());
+        jSpinnerPWJumlah.setValue(p.getJumlahPaket());
+        jSpinnerPWLama.setValue(p.getLamaHari());
+        for(int i=0;i<listTempatWisata.size();i++){
+            if(listTempatWisata.get(i).getIdTempatWisata()==p.getIdTempatWisata()){
+                   jComboBoxPWTempat.setSelectedIndex(i);
+                   break;
+            }
+        }
+        jTextAreaPWFasilitas.setText(p.getFasilitas());
+        disableEnablePaketWisata(true);
     }//GEN-LAST:event_jTablePaketWisataMouseClicked
 
     /**

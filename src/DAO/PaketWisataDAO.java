@@ -73,6 +73,7 @@ public class PaketWisataDAO extends ConnectionDB {
             preparedStatement.setInt(6, paketWisata.getLamaHari());
             preparedStatement.setString(7, paketWisata.getFasilitas());
             preparedStatement.setInt(8, paketWisata.getIdPaketWisata());
+//            System.out.println(preparedStatement.toString());
             preparedStatement.executeUpdate();
             isSuccess = true;
         } catch (SQLException e) {
@@ -86,7 +87,7 @@ public class PaketWisataDAO extends ConnectionDB {
          ArrayList<PaketWisata> listPaketWisata = new ArrayList<>();
         try{
             Statement stmt = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
-            String sql = "SELECT * from paketwisata";
+            String sql = "SELECT `id_paketwisata`, p.`nama`, `batas_peserta`, `harga`, p.`id_tempatwisata`, `jumlah_paket`, `lama_hari`, `fasilitas`,t.nama as tempatwisata FROM `paketwisata` p, tempatwisata t WHERE p.id_tempatwisata = t.id_tempatwisata order by p.nama asc";
             ResultSet rs = stmt.executeQuery(sql);
             while(rs.next()){
                 PaketWisata paketWisata = new PaketWisata();
@@ -98,6 +99,7 @@ public class PaketWisataDAO extends ConnectionDB {
                 paketWisata.setJumlahPaket(rs.getInt("jumlah_paket")); 
                 paketWisata.setLamaHari(rs.getInt("lama_hari")); 
                 paketWisata.setFasilitas(rs.getString("fasilitas"));
+                paketWisata.setTempatWisata(rs.getString("tempatwisata"));
                 listPaketWisata.add(paketWisata);
             }
         } catch (SQLException error){
