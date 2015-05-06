@@ -3,11 +3,21 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Nanda/Documents/NetBeansProjects/TravelFix/src/Controller/TempatWisataController.java</file>
-            <file>file:/C:/Users/Nanda/Documents/NetBeansProjects/TravelFix/src/DAO/TempatWisataDAO.java</file>
-            <file>file:/C:/Users/Nanda/Documents/NetBeansProjects/TravelFix/src/ViewController/MenuUtama.java</file>
-            <file>file:/C:/Users/Nanda/Documents/NetBeansProjects/TravelFix/src/ViewController/Login.java</file>
+            <file>file:/C:/Users/Nanda/Documents/NetBeansProjects/TravelFix/src/DAO/PetugasDAO.java</file>
+            <file>file:/C:/Users/Nanda/Documents/NetBeansProjects/TravelFix/src/Controller/PetugasController.java</file>
+            <file>file:/C:/Users/Nanda/Documents/NetBeansProjects/TravelFix/src/Model/Transaksi.java</file>
+            <file>file:/C:/Users/Nanda/Documents/NetBeansProjects/TravelFix/src/Controller/PaketWisataController.java</file>
+            <file>file:/C:/Users/Nanda/Documents/NetBeansProjects/TravelFix/src/Model/Chart.java</file>
+            <file>file:/C:/Users/Nanda/Documents/NetBeansProjects/TravelFix/src/ViewController/MenuUtamaPetugas.java</file>
             <file>file:/C:/Users/Nanda/Documents/NetBeansProjects/TravelFix/src/ViewController/Lokasi.java</file>
+            <file>file:/C:/Users/Nanda/Documents/NetBeansProjects/TravelFix/src/Controller/Helper.java</file>
+            <file>file:/C:/Users/Nanda/Documents/NetBeansProjects/TravelFix/src/Model/Petugas.java</file>
+            <file>file:/C:/Users/Nanda/Documents/NetBeansProjects/TravelFix/src/Controller/PrintUIWindow.java</file>
+            <file>file:/C:/Users/Nanda/Documents/NetBeansProjects/TravelFix/src/Controller/PieChart.java</file>
+            <file>file:/C:/Users/Nanda/Documents/NetBeansProjects/TravelFix/src/Model/PaketWisata.java</file>
+            <file>file:/C:/Users/Nanda/Documents/NetBeansProjects/TravelFix/src/ViewController/MenuUtama.java</file>
+            <file>file:/C:/Users/Nanda/Documents/NetBeansProjects/TravelFix/src/DAO/TransaksiDAO.java</file>
+            <file>file:/C:/Users/Nanda/Documents/NetBeansProjects/TravelFix/src/Controller/TransaksiController.java</file>
         </group>
     </open-files>
 </project-private>
