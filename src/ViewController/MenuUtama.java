@@ -10,7 +10,6 @@ import DAO.Auth;
 import Model.*;
 import java.util.ArrayList;
 import java.util.Date;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 /**
  *
@@ -22,6 +21,7 @@ public class MenuUtama extends javax.swing.JFrame {
     MemberController memberController;
     PetugasController petugasController;
     TempatWisataController twController;
+    
     ArrayList<Member> listMember;
     ArrayList<Petugas> listPetugas;
     ArrayList<TempatWisata> listTempatWisata;
@@ -35,6 +35,7 @@ public class MenuUtama extends javax.swing.JFrame {
         memberController = new MemberController();
         petugasController = new PetugasController();
         twController= new TempatWisataController();
+        
         helper = new Helper();
         auth = new Auth();
         viewDataMember();
@@ -47,9 +48,6 @@ public class MenuUtama extends javax.swing.JFrame {
 
     }
 
-
-
-    
     private void disableEnableMember(boolean status){
         jButtonMemberEnDi.setEnabled(status);
         jButtonMemberEdit.setEnabled(status);
@@ -103,7 +101,25 @@ public class MenuUtama extends javax.swing.JFrame {
             jTextAreaTWLokasi.setText("");
         }
     }
-    
+
+        private void disableEnablePaketWisata(boolean status){
+        jButtonPWEnDi.setEnabled(status);
+        jButtonPWEdit.setEnabled(status);
+        jButtonPWHapus.setEnabled(status);
+        if(status){
+            jButtonPWTambah.setEnabled(false);
+        }else{
+            jButtonPWTambah.setEnabled(true);
+            jTextFieldPWNama.setText("");
+            jSpinnerPWBatas.setValue(0);
+            jSpinnerPWHarga.setValue(0);
+            jSpinnerPWJumlah.setValue(0);
+            jSpinnerPWLama.setValue(0);
+            jComboBoxPWTempat.setSelectedIndex(0);
+            jTextAreaPWFasilitas.setText("");
+        }
+    }
+
     private void viewDataMember(){
         listMember = memberController.getAllMember();
         String[] title = {"No","Nama","No KTP","No HP","Username","Privilege"};
@@ -127,14 +143,12 @@ public class MenuUtama extends javax.swing.JFrame {
         for(int i=0;i<listPetugas.size();i++){
             Petugas p = listPetugas.get(i);
             data[i][0] = String.valueOf(i+1);
-//            data[i][1] = String.valueOf(p.getIdPetugas());
             data[i][1] = p.getNama();
             data[i][2] = p.getNoKtp();
             data[i][3] = p.getNoHp();
             data[i][4] = p.getUsername();
             data[i][5] = p.getPrivilege();
         }
-//        System.out.println(listPetugas.get(1).getNama());
         jTablePetugas.setModel(new DefaultTableModel(data, title));
     }
     

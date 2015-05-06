@@ -35,6 +35,15 @@ public class PaketWisata {
         this.lamaHari = lamaHari;
         this.fasilitas = fasilitas;
     }
+     public PaketWisata(String nama,int batasPeserta,double harga,int idTempatWisata,int jumlahPaket,int lamaHari,String fasilitas){
+        this.nama = nama;
+        this.batasPeserta = batasPeserta;
+        this.harga = harga;
+        this.idTempatWisata = idTempatWisata;
+        this.jumlahPaket = jumlahPaket;
+        this.lamaHari = lamaHari;
+        this.fasilitas = fasilitas;
+    }
 
     /**
      * @return the idPaketWisata

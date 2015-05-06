@@ -50,7 +50,7 @@ public class TempatWisataController {
         return isSuccess;
     }
    
-        public void populateDatatoJComboboxTWTempat(ArrayList<TempatWisata> listTempatWisata, JComboBox jComboBoxPWTempat) {
+    public void populateDatatoJComboboxTWTempat(ArrayList<TempatWisata> listTempatWisata, JComboBox jComboBoxPWTempat) {
         comboBoxModel = new DefaultComboBoxModel();
         for (final TempatWisata tempatWisata : listTempatWisata) {
             EventQueue.invokeLater(new Runnable() {
